@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "ScaleVAI"
+description = "The imported ScaleVAI web project, preserving its existing starter page, links, styling, and assets while running on Replit."
+version = "1.0.0"
+id = "artifacts/scalevai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18259
+
+[services.development]
+run = "pnpm --filter @workspace/scalevai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/scalevai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/scalevai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18259"
+BASE_PATH = "/"
