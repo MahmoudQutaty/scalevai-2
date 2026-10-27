@@ -1,27 +1,28 @@
 kind = "web"
 previewPath = "/"
 title = "ScaleVAI"
-description = "The imported ScaleVAI web project, preserving its existing starter page, links, styling, and assets while running on Replit."
+description = "ScaleVAI website using Next.js App Router and TypeScript."
 version = "1.0.0"
 id = "artifacts/scalevai"
 router = "path"
 
 [[services]]
 name = "web"
-paths = [ "/" ]
+paths = ["/", "/api/contact", "/_next/hmr"]
 localPort = 18259
 
 [services.development]
 run = "pnpm --filter @workspace/scalevai run dev"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/scalevai", "run", "build" ]
-serve = "static"
-publicDir = "artifacts/scalevai/dist/public"
+build = ["pnpm", "--filter", "@workspace/scalevai", "run", "build"]
 
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
+[services.production.run]
+args = ["pnpm", "--filter", "@workspace/scalevai", "run", "start"]
+
+[services.production.run.env]
+PORT = "18259"
+NODE_ENV = "production"
 
 [services.env]
 PORT = "18259"

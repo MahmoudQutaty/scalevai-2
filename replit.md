@@ -1,27 +1,43 @@
 # ScaleVAI
 
-Imported web project running as a React + Vite app in a pnpm workspace.
+ScaleVAI's website uses Next.js App Router and strict TypeScript. Keep Next.js; do not migrate to Vite, React Router, or another framework.
 
-## Run & Operate
+## Run
 
-- Start the managed workflow `artifacts/scalevai: web` to view the app at `/`.
-- `pnpm --filter @workspace/scalevai run typecheck` checks the web package.
-- `pnpm run typecheck` checks the workspace.
-- Vite builds require the managed workflow's `PORT` and `BASE_PATH` variables.
-- No secrets, database, or API server are required by the imported frontend.
+- The app is in `artifacts/scalevai/`, served at `/`.
+- Start the managed workflow `artifacts/scalevai: web`. It runs Next.js on `0.0.0.0` with the workflow's `PORT` (5000 fallback).
+- `pnpm --filter @workspace/scalevai run lint`
+- `pnpm --filter @workspace/scalevai run build`
+- `pnpm --filter @workspace/scalevai run typecheck`
+- Next.js is this product's only runtime. The shared API server and mockup sandbox are unused scaffold packages; leave their files intact and their workflows stopped.
+- Production uses `next start`, not static Vite output or SPA rewrites.
 
-## Source and scope
+## References
 
-- `artifacts/scalevai/src/app/page.tsx` preserves the imported homepage.
-- `artifacts/scalevai/src/app/globals.css` preserves its Tailwind theme.
-- `artifacts/scalevai/public/` contains the original public assets and favicon.
-- `.migration-backup/` retains the original Next.js source and reference documents.
-- The imported running app is the standard Next.js starter page. The ScaleVAI HTML in `.migration-backup/reference/` is reference material, not an implemented route. Migration preserves the running source rather than building that separate design.
-- The API server, shared libraries, and mockup sandbox are pre-existing workspace scaffolding, not features of the imported app.
+- `.migration-backup/reference/scalevai-home.html`: exact visual and interaction specification.
+- `.migration-backup/reference/ScaleVAI Website Content.docx`: approved copy.
+- The original imported Next.js source remains intact in `.migration-backup/`.
+- `public/hero.mp4` is the user's own video; use the reference's animated scene fallback if unavailable.
 
-## Migration conventions
+## Required conventions
 
-- Preserve the original page, links, metadata, and system-selected dark mode.
-- Use standard images and Vite base-prefixed asset paths instead of Next.js image components.
-- Load Geist and Geist Mono through Google Fonts instead of `next/font`.
-- Use artifact-managed workflows; do not run a root-level `pnpm dev`.
+- Match the reference identically: layout, spacing, colors, Outfit via `next/font`, CSS values, breakpoints, timing, hover behavior, and interactions. Do not redesign, simplify, or invent copy, numbers, or claims.
+- CSS Modules per component, shared `styles/tokens.css`, and a small `styles/globals.css`. No Tailwind.
+- Use `next/link` for internal links and per-route metadata.
+- Strict TypeScript; no `any`. Run lint and build after each phase.
+- Respect reduced motion in CSS and JavaScript.
+- One shared Slider for both carousels; one Button; one SectionHeading.
+- Contact is initially a validated stub, not real sending. Never claim an enquiry was sent. If nothing is persisted, do not claim it was recorded either.
+
+## Approved phase boundaries
+
+Build one phase at a time and stop for the user's visual check after each:
+1. Tokens, fonts, layout shell, and Next.js runtime.
+2. Navbar and Footer.
+3. Hero.
+4. Intro and stats.
+5. Carousels.
+6. Remaining sections.
+7. Routes and polish.
+
+Future folders: `components/layout`, `components/sections/home`, `components/ui`, `data`, `hooks`, `lib`, `types`. Do not build later phases before approval.

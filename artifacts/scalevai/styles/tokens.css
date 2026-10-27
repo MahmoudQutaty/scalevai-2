@@ -1,0 +1,14 @@
+/* Values copied from reference/scalevai-home.html, without reinterpretation. */
+:root {
+  --navy: #030b1c;
+  --ink: #071536;
+  --blue: #0f62e8;
+  --sky: #4a90f0;
+  --glass: rgba(255, 255, 255, .08);
+  --line: rgba(255, 255, 255, .2);
+  --nav: 68px;
+  --content-max: 1360px;
+  --content-gutter: 4vw;
+  color-scheme: dark;
+  box-sizing: border-box;
+}
