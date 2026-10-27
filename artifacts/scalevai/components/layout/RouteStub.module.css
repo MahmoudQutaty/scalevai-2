@@ -1,0 +1,33 @@
+.stub {
+  min-height: 100svh;
+  padding: calc(var(--nav) + env(safe-area-inset-top, 0px) + 40px) 0 40px;
+}
+
+.content {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--content-gutter);
+}
+
+.content h1 {
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 28px;
+}
+
+.content p {
+  max-width: 760px;
+  opacity: .85;
+}
+
+.anchors {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.anchors a {
+  scroll-margin-top: calc(var(--nav) + 24px);
+}

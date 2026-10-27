@@ -1,0 +1,4 @@
+.drawer{position:fixed;inset:0;z-index:45;background:rgba(3,11,28,.97);padding:calc(var(--nav) + 24px + env(safe-area-inset-top,0px)) 8vw 40px;display:flex;flex-direction:column;gap:6px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);overflow:auto}
+.open{transform:none}
+.drawer a{font-size:22px;padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer .pill{margin-top:22px;justify-content:space-between;font-size:17px}

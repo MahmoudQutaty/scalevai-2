@@ -1,0 +1,1 @@
+- [Next.js preview origins](next-preview-origins.md) — local screenshots can pass while the live Replit preview's hot reload is origin-blocked.
