@@ -101,7 +101,7 @@ export const industries: readonly Industry[] = [
   },
 ];
 
-export const industryHref = (slug: string): string => `/industries#${slug}`;
+export const industryHref = (slug: string): string => `/industries/${slug}`;
 
 export const industryCopy = {
   systems: "Specialized AI Systems Deployed",

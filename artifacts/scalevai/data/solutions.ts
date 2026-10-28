@@ -131,7 +131,9 @@ export const solutions: readonly Solution[] = [
   },
 ];
 
-export const solutionHref = (slug: string): string =>
+export const solutionHref = (slug: string): string => `/services/${slug}`;
+
+export const solutionSourceHref = (slug: string): string =>
   `https://mahmoudqutaty.github.io/scalevai/solutions/${slug}.html`;
 
 export const solutionCopy = {

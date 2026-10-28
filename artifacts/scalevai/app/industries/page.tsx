@@ -12,7 +12,7 @@ export default function IndustriesPage() {
     <RouteStub name="industries">
       <div className={styles.anchors}>
         {industries.map((industry) => (
-          <Link id={industry.slug} key={industry.slug} href={industryHref(industry.slug)}>
+          <Link key={industry.slug} href={industryHref(industry.slug)}>
             {industry.name}
           </Link>
         ))}
