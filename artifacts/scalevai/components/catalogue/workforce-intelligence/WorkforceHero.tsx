@@ -29,7 +29,7 @@ export default function WorkforceHero() {
             </h1>
             <p className={styles.lead}>{copy.description}</p>
             <div className={styles.actions}>
-              <Button href="/#talk" variant="pill" icon="✆" className={styles.callButton}>
+              <Button href="#talk" variant="pill" icon="✆" className={styles.callButton}>
                 {copy.bookCall}
               </Button>
               <Button href="#how" variant="ghost" className={styles.howButton}>

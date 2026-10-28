@@ -16,7 +16,7 @@ export default function HowItWorksSection() {
           <div className={styles.cta}>
             <h3>{copy.process.ctaHeading}</h3>
             <p>{copy.process.ctaDescription}</p>
-            <Button href="/#talk" variant="white" icon="›">
+            <Button href="#talk" variant="white" icon="›">
               {copy.process.ctaLabel}
             </Button>
           </div>

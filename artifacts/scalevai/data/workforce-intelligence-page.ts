@@ -158,4 +158,79 @@ export const workforceIntelligencePage = {
     floorCoverage: "100%",
     chartCaption: "Entry and exit coverage by floor",
   },
+  faq: {
+    label: "FAQ",
+    heading: "Workforce Intelligence FAQ",
+    intro: "Can’t find your answer? Our team will walk you through it.",
+    bookCall: "Book a call",
+    items: [
+      {
+        question: "Do we need new cameras or hardware?",
+        answer:
+          "In most cases, no. Workforce Intelligence is built to work with your existing CCTV and access-control infrastructure wherever possible.",
+      },
+      {
+        question: "How is employee privacy handled?",
+        answer:
+          "The system is configured to verify presence and flag anomalies, not for general surveillance, and is deployed in line with your organization’s data and privacy policies.",
+      },
+      {
+        question: "Can it integrate with our HR and payroll systems?",
+        answer:
+          "Yes. Verified attendance data can be integrated directly into your existing HR, payroll, and compliance workflows.",
+      },
+      {
+        question: "How long does deployment take?",
+        answer:
+          "Typical deployments, covering connecting to existing systems, configuring your environment, and training your team, take 8–16 weeks depending on scope.",
+      },
+    ],
+  },
+  related: {
+    label: "MORE SOLUTIONS",
+    heading: "Other ways ScaleVAI puts AI to work",
+    cards: [
+      {
+        slug: "immersive-showroom",
+        title: "Immersive Showroom",
+        summary:
+          "Immersive 3D property and product experiences that convince remote and international buyers faster than flat photos or floor plans.",
+      },
+      {
+        slug: "talent-intelligence",
+        title: "Talent Intelligence",
+        summary:
+          "AI-powered candidate screening that delivers a ranked shortlist for high-volume, high-turnover roles in days instead of weeks.",
+      },
+      {
+        slug: "revenue-cycle",
+        title: "Revenue Cycle",
+        summary:
+          "AI-powered revenue cycle management that reduces claim denials and manual coding errors.",
+      },
+    ],
+  },
+  finalCta: {
+    heading: "Ready for ground-truth workforce visibility?",
+    description:
+      "Talk to ScaleVAI about deploying Workforce Intelligence across your sites.",
+    bookCall: "Book a call",
+  },
+  contact: {
+    heading: "Book a call about Workforce Intelligence.",
+    description:
+      "Speak directly with a senior consultant. Dubai, UAE · scale@scalevai.com",
+    formHeading: "Speak with our experts",
+    name: "Full name",
+    company: "Company",
+    email: "Business email",
+    phone: "Phone",
+    message: "Message",
+    submit: "Send enquiry",
+    interestOptions: [
+      { value: "workforce", label: "Workforce Intelligence" },
+      { value: "another", label: "Another solution" },
+      { value: "partnering", label: "Partnering" },
+    ],
+  },
 } as const;

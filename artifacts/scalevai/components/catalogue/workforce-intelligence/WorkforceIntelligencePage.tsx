@@ -3,6 +3,10 @@ import HowItWorksSection from "./HowItWorksSection";
 import ProblemSection from "./ProblemSection";
 import CapabilitiesSection from "./CapabilitiesSection";
 import CaseStudySection from "./CaseStudySection";
+import FaqSection from "./FaqSection";
+import RelatedSolutionsSection from "./RelatedSolutionsSection";
+import FinalCtaSection from "./FinalCtaSection";
+import WorkforceContactSection from "./WorkforceContactSection";
 
 export default function WorkforceIntelligencePage() {
   return (
@@ -12,6 +16,10 @@ export default function WorkforceIntelligencePage() {
       <HowItWorksSection />
       <CapabilitiesSection />
       <CaseStudySection />
+      <FaqSection />
+      <RelatedSolutionsSection />
+      <FinalCtaSection />
+      <WorkforceContactSection />
     </main>
   );
 }
