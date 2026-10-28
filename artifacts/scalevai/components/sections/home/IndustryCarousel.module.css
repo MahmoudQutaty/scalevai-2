@@ -10,10 +10,23 @@
 .dev{align-self:center;background:#fff;border-radius:16px;min-height:300px;box-shadow:0 30px 60px rgba(0,0,0,.35);padding:16px;color:#223;transform:rotate(-1.5deg)}
 .dev i{display:block;height:10px;width:30%;background:#dde4f2;border-radius:4px;margin-bottom:14px}
 .dev svg{width:100%;height:190px}
+.dev b{font-size:20px}
 .tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin:22px 0 14px}
 .tabs button{height:64px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.07);font-size:14px;transition:.4s;text-align:center;line-height:1.2}
 .tabs button small{display:block;opacity:.6;font-size:11px}
 .tabs button.on{background:var(--c);border-color:transparent;transform:translateY(-4px)}
 @media (min-width:1001px){.card{min-height:0;padding:26px 36px;gap:24px}.card h3{font-size:clamp(30px,3vw,42px);margin-bottom:8px}.card p{margin-bottom:14px}.kp{gap:8px 30px;padding-bottom:10px;margin-bottom:10px}.q{padding:8px 12px;margin-bottom:12px}.dev{min-height:0;padding:14px}.dev svg{height:130px}}
 @media (max-width:1000px){.card{grid-template-columns:minmax(0,1fr)}.card>div{min-width:0}.kp b{overflow-wrap:anywhere}.tabs{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){
+  .card{min-height:0;padding:16px;gap:12px}
+  .card h3{font-size:28px;line-height:1.15;margin-bottom:8px}
+  .card p{font-size:13px;line-height:1.4;margin-bottom:10px}
+  .kp{font-size:12px;line-height:1.35;gap:6px 12px;padding-bottom:8px;margin-bottom:8px}
+  .kp b{font-size:12px}
+  .q{font-size:12px;line-height:1.4;padding:8px 10px;margin-bottom:10px}
+  .dev{min-height:0;padding:10px}
+  .dev i{height:6px;margin-bottom:6px}
+  .dev svg{height:clamp(36px,8svh,64px)}
+  .dev b{font-size:16px;line-height:1.4}
+}
 @media (prefers-reduced-motion: reduce){.card,.tabs button{transition:none}}

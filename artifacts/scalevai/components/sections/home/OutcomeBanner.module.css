@@ -1,5 +1,5 @@
 .w{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-gutter)}
-.ban{border-radius:26px;background:linear-gradient(110deg,#02060f 50%,#0d2a66);padding:50px 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:20px;clip-path:polygon(0 0,100% 0,100% 85%,96% 100%,0 100%);margin-bottom:80px;overflow:hidden}
+.ban{border-radius:26px;background:linear-gradient(110deg,#02060f 50%,#0d2a66);padding:50px 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:20px;margin-bottom:80px;overflow:hidden}
 .h3{font-size:clamp(24px,2.6vw,38px);font-weight:500;line-height:1.25;margin-bottom:18px}
 /* Reference sets only max-width, which collapses the orb inside a grid cell; explicit width keeps it visible. */
 .orb{border-radius:50%;background:radial-gradient(circle at 40% 40%,#9fd0ff,#2f6bff 40%,#0a1f4d 70%);box-shadow:0 0 90px #2f6bff;animation:fl 5s ease-in-out infinite alternate;width:min(260px,100%);max-width:260px;aspect-ratio:1;margin:auto}

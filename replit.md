@@ -28,6 +28,7 @@ ScaleVAI's website uses Next.js App Router and strict TypeScript. Keep Next.js; 
 - Respect reduced motion in CSS and JavaScript.
 - One shared Slider for both carousels; one Button; one SectionHeading.
 - Contact uses the Next.js POST `/api/contact` demo endpoint with Zod validation. It returns `{ ok: true, delivered: false }` and sends/stores/logs no enquiry data. Use the approved feedback “Thanks, we have recorded your enquiry (demo).” Never claim an email was sent.
+- User-approved departures from reference: phone “Challenges we hear every week” cards must be one column; the Outcome banner must have equal rounded corners, not a diagonal cut; phone “Challenges we solve” carousel cards must be compact enough to view without hiding their copy.
 
 ## Approved phase boundaries
 

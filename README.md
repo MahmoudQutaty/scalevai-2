@@ -146,6 +146,10 @@ Intentional differences approved during the phased build:
 - At 600px and below, Services cards are stacked: 56px bars and a 220px active card.
   Desktop and tablet keep their original horizontal presentation.
 - IndustryTiles and Why cards use the requested one-column phone layout.
+- “Challenges we hear every week” cards also use one column at 600px and below.
+- OutcomeBanner has the same 26px rounding on all four corners instead of a
+  diagonal cut. Phone industry showcase cards use compact spacing and smaller
+  graphics to keep the full card easier to view without removing copy.
 - The Outcome orb has an explicit width so it is visible; the original grid
   sizing could collapse it.
 - Both carousels use one Slider with the requested 0.9-second transition,

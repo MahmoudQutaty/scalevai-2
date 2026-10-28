@@ -21,7 +21,7 @@ function Device({ name }: { readonly name: string }) {
           {BARS.map((k) => <rect key={k} x={k * 50} y={180 - k * 5} width="30" height={k * 5 + 10} rx="3" />)}
         </g>
       </svg>
-      <b style={{ fontSize: 20 }}>{name}</b>
+      <b>{name}</b>
     </div>
   );
 }
