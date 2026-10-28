@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { copy, routes } from "@/data/nav";
-import { industries, industryHref } from "@/data/industries";
-import { megaPartners, megaProducts } from "@/data/partners";
-import { serviceHref, services } from "@/data/services";
+import { industries, industryCopy, industryHref } from "@/data/industries";
+import { solutionCopy, solutionHref, solutions } from "@/data/solutions";
 import styles from "./MegaMenu.module.css";
 
 export type MegaKind = "services" | "industries";
@@ -19,12 +18,12 @@ export interface MegaMenuProps {
 
 function ServicesPanel({ onNavigate }: { onNavigate: () => void }) {
   const [active, setActive] = useState<number>(0);
-  const s = services[active];
+  const s = solutions[active];
   return (
     <>
       <div className={styles.core}>
         <small>{copy.coreServices}</small>
-        {services.map((item, i) => (
+        {solutions.map((item, i) => (
           <button
             key={item.slug}
             type="button"
@@ -40,12 +39,14 @@ function ServicesPanel({ onNavigate }: { onNavigate: () => void }) {
       </div>
       <div className={styles.mc} aria-live="polite">
         <div>
-          <p className={styles.heading}><i className={styles.ic} aria-hidden="true">◆</i><Link href={serviceHref(s.slug)} onClick={onNavigate}>{s.name}</Link></p>
+          <p className={styles.heading}><i className={styles.ic} aria-hidden="true">◆</i><Link href={solutionHref(s.slug)} onClick={onNavigate}>{s.name}</Link></p>
           <p className={styles.desc}>{s.summary}</p>
+          <p className={styles.meta}>{s.deployment} · {solutionCopy.region}</p>
+          <Link href={solutionHref(s.slug)} onClick={onNavigate}>{solutionCopy.explore} →</Link>
         </div>
         <div>
-          <p className={styles.heading}><i className={styles.ic} aria-hidden="true">✓</i>{copy.whatWeDeliver}</p>
-          <ul>{s.deliverables.map((d) => <li key={d}>{d}</li>)}</ul>
+          <p className={styles.heading}><i className={styles.ic} aria-hidden="true">✓</i>{solutionCopy.capabilities}</p>
+          <ul>{s.capabilities.map((d) => <li key={d.name}><b>{d.name}</b> {d.description}</li>)}</ul>
         </div>
       </div>
       <div className={styles.cta}>
@@ -57,10 +58,9 @@ function ServicesPanel({ onNavigate }: { onNavigate: () => void }) {
 }
 
 function IndustriesPanel({ onNavigate }: { onNavigate: () => void }) {
-  const [active, setActive] = useState<number | null>(null);
-  const ind = active === null ? null : industries[active];
-  const partners = ind ? ind.partners.split(" · ") : megaPartners;
-  const products = ind ? ind.capabilities : megaProducts;
+  const [active, setActive] = useState(0);
+  const ind = industries[active];
+  const split = Math.ceil(industries.length / 2);
   const link = (i: number) => {
     const x = industries[i];
     return (
@@ -71,14 +71,16 @@ function IndustriesPanel({ onNavigate }: { onNavigate: () => void }) {
   };
   return (
     <>
-      <div className={styles.g}>{[0, 1, 2].map(link)}</div>
-      <div className={styles.g}>{industries.slice(3).map((_, k) => link(k + 3))}</div>
+      <div className={styles.g}>{industries.slice(0, split).map((_, i) => link(i))}</div>
+      <div className={styles.g}>{industries.slice(split).map((_, i) => link(i + split))}</div>
       <div aria-live="polite">
-        <small className={styles.label}>{copy.productsPartners}</small>
-        <ul className={styles.list}>{partners.map((p) => <li key={p}>{p}</li>)}</ul>
+        <p className={styles.heading}><Link href={industryHref(ind.slug)} onClick={onNavigate}>{ind.name}</Link></p>
+        <p className={styles.desc}>{ind.summary}</p>
+        <ul className={styles.list}>{ind.metrics.map((m) => <li key={m.label}><b>{m.value}</b> {m.label}</li>)}</ul>
       </div>
-      <div>
-        <ul className={styles.listOffset}>{products.map((p) => <li key={p}>{p}</li>)}</ul>
+      <div aria-live="polite">
+        <small className={styles.label}>{industryCopy.systems}</small>
+        <ul className={styles.list}>{ind.systems.map((system) => <li key={system.name}><b>{system.name}</b> {system.description}</li>)}</ul>
       </div>
       <div className={styles.cta}>
         <span>✦ <b>{copy.industriesCtaLead}</b>{copy.industriesCtaText}</span>

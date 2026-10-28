@@ -2,7 +2,7 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { companyLinks, contact, copy, routes } from "@/data/nav";
 import { industries, industryHref } from "@/data/industries";
-import { serviceHref, services } from "@/data/services";
+import { solutionHref, solutions } from "@/data/solutions";
 import Logo from "./Logo";
 import styles from "./Footer.module.css";
 
@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <div>
             <h2>{copy.footerServices}</h2>
-            {services.map((s) => <Link key={s.slug} href={serviceHref(s.slug)}>{s.name}</Link>)}
+            {solutions.map((s) => <Link key={s.slug} href={solutionHref(s.slug)}>{s.name}</Link>)}
           </div>
           <div>
             <h2>{copy.footerIndustries}</h2>

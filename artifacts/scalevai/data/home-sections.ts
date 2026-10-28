@@ -34,9 +34,6 @@ export const challenges = {
 
 export const industryTiles = {
   heading: "Built for the industries we know best",
-  explore: "Explore ›",
-  href: "#talk",
-  itemsShown: 3,
 } as const;
 
 export type WhyIcon = "people" | "target" | "shield" | "bolt" | "heart";

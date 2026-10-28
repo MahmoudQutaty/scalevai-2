@@ -73,6 +73,15 @@ Use `next/image` if adding raster images.
 6. Keep the reference's CSS values and reduced-motion handling. Check keyboard
    focus, phone widths, and lint/typecheck/build before delivery.
 
+The owner's newer catalogue supersedes the original reference lists:
+`data/solutions.ts` contains the 10 named solutions used by the Services menu,
+the “Challenges we solve” carousel, the footer, and the Services index.
+`data/industries.ts` contains the 6 industries, their deployed systems and
+supplied metrics. The broader engineering capabilities in `data/services.ts`
+remain separate and power only the existing expandable delivery section.
+“Explore Solution” uses the exact GitHub Pages URLs supplied by the owner;
+industry links use the existing `/industries#...` index anchors.
+
 ## Contact API and demo behavior
 
 `POST /api/contact` accepts JSON:

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { industries } from "@/data/industries";
+import { industries, industryCopy, industryHref } from "@/data/industries";
 import { industryTiles } from "@/data/home-sections";
 import styles from "./IndustryTiles.module.css";
 
@@ -15,14 +15,18 @@ export function IndustryTiles() {
           const style = { "--g": `linear-gradient(135deg,${x.colors[0]},${x.colors[1]})` } as CSSProperties;
           return (
             <Reveal key={x.slug}>
-              <Link href={industryTiles.href} className={styles.it}>
-                <div className={styles.ph} style={style}><span>{industryTiles.explore}</span></div>
+              <Link href={industryHref(x.slug)} className={styles.it} aria-label={`${industryCopy.explore}: ${x.name}`}>
+                <div className={styles.ph} style={style}><span>{industryCopy.explore}</span></div>
                 <div className={styles.bd}>
                   <h3 className={styles.h}>{x.name}</h3>
                   <p className={styles.p}>{x.summary}</p>
+                  <h4 className={styles.systemsHeading}>{industryCopy.systems}</h4>
                   <ul>
-                    {x.capabilities.slice(0, industryTiles.itemsShown).map((l) => <li key={l} className={styles.li}>{l}</li>)}
+                    {x.systems.map((system) => <li key={system.name} className={styles.li}><b>{system.name}</b><span>{system.description}</span></li>)}
                   </ul>
+                  <dl className={styles.metrics}>
+                    {x.metrics.map((metric) => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}
+                  </dl>
                 </div>
               </Link>
             </Reveal>

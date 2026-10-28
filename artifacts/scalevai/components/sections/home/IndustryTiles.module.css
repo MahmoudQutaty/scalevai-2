@@ -12,6 +12,13 @@
 .p{font-size:13px;opacity:.8;margin-bottom:8px}
 .li{list-style:none;font-size:13.5px;margin-top:6px}
 .li::before{content:"✓";display:inline-grid;place-items:center;width:16px;height:16px;background:#fff;color:var(--blue);border-radius:50%;font-size:10px;margin-right:8px}
+.systemsHeading{font-size:14px;font-weight:500;margin:16px 0 10px}
+.li b{font-weight:500}
+.li span{display:block;font-size:13px;line-height:1.6;opacity:.85;margin-top:4px}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-top:1px solid var(--line);margin-top:20px;padding-top:16px}
+.metrics>div{display:flex;flex-direction:column;min-width:0;overflow-wrap:anywhere}
+.metrics dt{order:1;font-size:11.5px;line-height:1.4;opacity:.85}
+.metrics dd{margin:0 0 4px;font-size:20px;font-weight:600}
 @media(max-width:1000px){.ind{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.ind{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.it,.ph span{transition:none}.it:hover{transform:none}}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import RouteStub from "@/components/layout/RouteStub";
 import { pageCopy } from "@/data/pages";
-import { services, serviceHref } from "@/data/services";
+import { solutions, solutionHref } from "@/data/solutions";
 import { pageMetadata } from "@/lib/metadata";
 import styles from "@/components/layout/RouteStub.module.css";
 
@@ -11,8 +11,8 @@ export default function ServicesPage() {
   return (
     <RouteStub name="services">
       <div className={styles.anchors}>
-        {services.map((service) => (
-          <Link id={service.slug} key={service.slug} href={serviceHref(service.slug)}>
+        {solutions.map((service) => (
+          <Link id={service.slug} key={service.slug} href={solutionHref(service.slug)}>
             {service.name}
           </Link>
         ))}

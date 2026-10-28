@@ -3,7 +3,7 @@
 import { useState, type CSSProperties } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { services } from "@/data/services";
+import { deliveryServices } from "@/data/services";
 import { servicesExpand } from "@/data/home-sections";
 import styles from "./ServicesExpand.module.css";
 
@@ -13,7 +13,7 @@ export function ServicesExpand() {
     <div className={styles.w} id="services-expand">
       <Reveal><SectionHeading text={servicesExpand.heading} /></Reveal>
       <Reveal className={styles.exp}>
-        {services.map((s, i) => {
+        {deliveryServices.map((s, i) => {
           const on = i === active;
           const style = { "--g": `linear-gradient(160deg,${s.colors[0]},${s.colors[1]})` } as CSSProperties;
           return (
