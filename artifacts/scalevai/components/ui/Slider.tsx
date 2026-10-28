@@ -18,23 +18,41 @@ export interface SliderApi {
 }
 
 interface SliderProps {
+  readonly className?: string;
   readonly count: number;
   readonly align: "center" | "start";
   readonly gap: number;
   readonly renderItem: (i: number, active: boolean) => ReactNode;
+  readonly frameClassName?: string;
   /** Start mode: card width from measured metrics (sets --cw on track). */
   readonly itemWidth?: (m: SliderMetrics) => number;
   readonly autoplayMs?: number;
   readonly controlsMargin?: string;
+  readonly indicatorCount?: number;
   readonly beforeControls?: (api: SliderApi) => ReactNode;
   readonly label: string;
+  readonly style?: CSSProperties;
 }
 
 interface Measured extends SliderMetrics {
   readonly cardWidth: number;
 }
 
-export function Slider({ count, align, gap, renderItem, itemWidth, autoplayMs, controlsMargin, beforeControls, label }: SliderProps) {
+export function Slider({
+  className,
+  count,
+  align,
+  gap,
+  renderItem,
+  frameClassName,
+  itemWidth,
+  autoplayMs,
+  controlsMargin,
+  indicatorCount,
+  beforeControls,
+  label,
+  style,
+}: SliderProps) {
   const reduced = useReducedMotion();
   const rootRef = useRef<HTMLDivElement>(null);
   const anchorRef = useRef<HTMLElement>(null);
@@ -92,6 +110,7 @@ export function Slider({ count, align, gap, renderItem, itemWidth, autoplayMs, c
   const positions = m ? sliderPositionCount(count, align, m.viewportWidth, m.contentLeft, m.cardWidth, gap) : count;
   const maxPos = Math.max(0, positions - 1);
   const current = Math.min(index, maxPos);
+  const indicators = indicatorCount ?? positions;
 
   const go = useCallback((i: number) => setIndex(wrapSliderIndex(i, positions)), [positions]);
 
@@ -113,9 +132,9 @@ export function Slider({ count, align, gap, renderItem, itemWidth, autoplayMs, c
   };
 
   return (
-    <div ref={rootRef} onClickCapture={() => setNonce((n) => n + 1)} role="region" aria-roledescription="carousel" aria-label={label}>
+    <div className={className} ref={rootRef} onClickCapture={() => setNonce((n) => n + 1)} role="region" aria-roledescription="carousel" aria-label={label} style={style}>
       <div className={styles.w} aria-hidden="true"><i ref={anchorRef} className={styles.anchor} /></div>
-      <div className={styles.fb}>
+      <div className={[styles.fb, frameClassName].filter(Boolean).join(" ")}>
         <div ref={trackRef} className={styles.track} style={trackStyle}>
           {Array.from({ length: count }, (_, i) => {
             const active = align === "center" ? i === current : i >= current;
@@ -126,8 +145,8 @@ export function Slider({ count, align, gap, renderItem, itemWidth, autoplayMs, c
       <div className={styles.w}>
         {beforeControls ? beforeControls({ index: current, go }) : null}
         <div className={styles.arr} style={controlsMargin ? { margin: controlsMargin } : undefined}>
-          <div aria-label={`Position ${current + 1} of ${positions}`} role="img">
-            {Array.from({ length: positions }, (_, i) => <i key={i} className={i === current ? styles.on : undefined} />)}
+          <div aria-label={`Position ${current + 1} of ${indicators}`} role="img">
+            {Array.from({ length: indicators }, (_, i) => <i key={i} className={i === current ? styles.on : undefined} />)}
           </div>
           <span>
             <button type="button" aria-label="Previous" onClick={() => go(current - 1)}>←</button>

@@ -4,8 +4,9 @@
 .track{display:flex;transition:transform .9s cubic-bezier(.6,0,.2,1)}
 .arr{display:flex;justify-content:space-between;align-items:center}
 .arr div{display:flex;gap:6px;flex-wrap:wrap;min-width:0}
-.arr i{width:34px;height:2px;flex:none;background:rgba(255,255,255,.4)}
+.arr i{width:34px;height:2px;flex:none;background:var(--slider-indicator-color,rgba(255,255,255,.4))}
 .arr>span{display:flex;flex:none}
-.arr i.on{background:#0f62e8}
+.arr i.on{background:var(--slider-indicator-active,#0f62e8)}
 .arr button{font-size:34px;margin-left:16px}
+.arr button:hover{color:var(--slider-arrow-hover,inherit)}
 @media (prefers-reduced-motion: reduce){.track{transition:none}}

@@ -189,4 +189,72 @@ export const immersiveShowroomPage = {
       { title: "Across time zones", description: "No scheduling around site visits" },
     ],
   },
+  why: {
+    heading: "Why businesses choose ScaleVAI for 3D showrooms",
+    description: "One showroom, connected to your sales engine.",
+    items: [
+      {
+        title: "Shapes the solution with you",
+        description: "We work through your buyers’ questions before anything is built.",
+        colors: ["#1d4ed8", "#312e81"],
+      },
+      {
+        title: "Measurable results",
+        description: "We agree the success metric first, then test against it.",
+        colors: ["#0e7490", "#1e3a8a"],
+      },
+      {
+        title: "Business first",
+        description:
+          "We start with your sales problem and use ready-made platforms where they fit.",
+        colors: ["#86198f", "#1e1b4b"],
+      },
+      {
+        title: "Live in weeks",
+        description:
+          "Right-sized for growing businesses, not year-long enterprise timelines.",
+        colors: ["#047857", "#0a2a4a"],
+      },
+      {
+        title: "A long-term partner",
+        description: "Managed support and reviews after launch.",
+        colors: ["#b45309", "#3a1a08"],
+      },
+    ],
+  },
+  faq: {
+    heading: "Immersive Showroom FAQs",
+    items: [
+      {
+        question: "What is an immersive 3D showroom?",
+        answer:
+          "An interactive online space where buyers walk through a property, store or product range in 3D, click items for details, compare options and take the next step without visiting in person.",
+      },
+      {
+        question: "How is it different from a virtual tour or video?",
+        answer:
+          "A video is passive and a basic tour only lets people look around. A showroom adds clickable products, configurations, AR, AI guidance, analytics and a direct path to enquiry or checkout.",
+      },
+      {
+        question: "How long does it take to go live?",
+        answer:
+          "Most single-space showrooms go live in weeks once capture is complete. Larger multi-property or multi-product programmes are delivered in phases.",
+      },
+      {
+        question: "Does it work on phones without an app?",
+        answer:
+          "Yes. Buyers open a link in a normal browser on mobile, tablet or desktop. No download is needed.",
+      },
+      {
+        question: "Can it connect to our CRM or online store?",
+        answer:
+          "Yes. It can sync with Shopify and external checkout platforms, and enquiries can flow into your CRM so your team sees who explored what.",
+      },
+      {
+        question: "Can you support Arabic and English?",
+        answer:
+          "Yes. Showroom content and AI guidance can be delivered in English and Arabic for buyers across the UAE and GCC.",
+      },
+    ],
+  },
 } as const;
