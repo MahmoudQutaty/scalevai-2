@@ -15,7 +15,8 @@
   gap: 28px;
 }
 
-.intro h3 {
+.intro .heading {
+  line-height: 1.5;
   font-size: clamp(26px, 2.8vw, 40px);
   font-weight: 400;
 }
@@ -174,9 +175,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .bars i {
-    animation-play-state: paused;
-    animation-duration: 3s !important;
-    animation-iteration-count: infinite !important;
+    animation: none !important;
+    height: 25%;
   }
+  /* Static heights preserve the original 0/-1s/-2s paused positions without an animation. */
+  .bars i:nth-child(2n) { height: 38.91%; }
+  .bars i:nth-child(3n) { height: 71.09%; }
   .stack, .wide > div { transition: none; }
 }

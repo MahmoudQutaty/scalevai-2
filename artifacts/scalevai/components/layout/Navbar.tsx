@@ -21,6 +21,7 @@ export default function Navbar() {
   const burgerRef = useRef<HTMLButtonElement>(null);
   const triggers = useRef<Record<MegaKind, HTMLAnchorElement | null>>({ services: null, industries: null });
   const wasOpen = useRef<boolean>(false);
+  const drawerOpenRef = useRef(false);
 
   useEffect(() => {
     const onS = () => setScrolled(window.scrollY > 30);
@@ -32,6 +33,7 @@ export default function Navbar() {
   useEffect(() => () => window.clearTimeout(closeTimer.current), []);
 
   const toggleDrawer = useCallback((o: boolean) => {
+    drawerOpenRef.current = o;
     setDrawer(o);
     document.body.style.overflow = o ? "hidden" : "";
   }, []);
@@ -42,9 +44,15 @@ export default function Navbar() {
   }, [drawer]);
 
   useEffect(() => {
-    if (!drawer) return;
     const onKey = (e: globalThis.KeyboardEvent) => {
-      if (e.key === "Escape") toggleDrawer(false);
+      if (!drawerOpenRef.current) return;
+      if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleDrawer(false);
+        burgerRef.current?.focus({ preventScroll: true });
+        return;
+      }
       if (e.key === "Tab") {
         const links = document.getElementById(DRAWER_ID)?.querySelectorAll<HTMLAnchorElement>("a[href]");
         const focusable: HTMLElement[] = [
@@ -62,9 +70,9 @@ export default function Navbar() {
         }
       }
     };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [drawer, toggleDrawer]);
+    document.addEventListener("keydown", onKey, true);
+    return () => document.removeEventListener("keydown", onKey, true);
+  }, [toggleDrawer]);
 
   useEffect(() => {
     const mobile = window.matchMedia("(max-width: 1000px)");
@@ -144,7 +152,7 @@ export default function Navbar() {
               aria-label="Menu"
               aria-expanded={drawer}
               aria-controls={DRAWER_ID}
-              onClick={() => toggleDrawer(!drawer)}
+              onClick={() => toggleDrawer(!drawerOpenRef.current)}
             >
               <i></i><i></i><i></i>
             </button>

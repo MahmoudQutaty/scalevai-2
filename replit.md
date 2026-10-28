@@ -27,7 +27,7 @@ ScaleVAI's website uses Next.js App Router and strict TypeScript. Keep Next.js; 
 - Strict TypeScript; no `any`. Run lint and build after each phase.
 - Respect reduced motion in CSS and JavaScript.
 - One shared Slider for both carousels; one Button; one SectionHeading.
-- Contact is a validated client-side demo until real sending is approved. Use the approved feedback “Thanks, we have recorded your enquiry (demo).” Never claim an email was sent or call the API during Phase 6.
+- Contact uses the Next.js POST `/api/contact` demo endpoint with Zod validation. It returns `{ ok: true, delivered: false }` and sends/stores/logs no enquiry data. Use the approved feedback “Thanks, we have recorded your enquiry (demo).” Never claim an email was sent.
 
 ## Approved phase boundaries
 

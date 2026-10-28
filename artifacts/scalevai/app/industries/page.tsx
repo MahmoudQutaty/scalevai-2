@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 import RouteStub from "@/components/layout/RouteStub";
 import { pageCopy } from "@/data/pages";
 import { industries, industryHref } from "@/data/industries";
-import Link from "next/link";
+import { pageMetadata } from "@/lib/metadata";
 import styles from "@/components/layout/RouteStub.module.css";
 
-export const metadata: Metadata = {
-  title: "Industries | ScaleVAI",
-  description: pageCopy.industries.description,
-};
+export const metadata = pageMetadata("Industries | ScaleVAI", pageCopy.industries.description);
 
 export default function IndustriesPage() {
   return (

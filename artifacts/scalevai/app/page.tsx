@@ -15,7 +15,7 @@ import { ContactSection } from "@/components/sections/home/ContactSection";
 
 export default function Home() {
   return (
-    <main aria-label="ScaleVAI" className={styles.shell}>
+    <main id="main-content" tabIndex={-1} aria-label="ScaleVAI" className={styles.shell}>
       <Hero />
       <Intro>
         <IndustryCarousel />

@@ -53,11 +53,11 @@ export function Foundations() {
         <div className={styles.big} aria-live="polite">
           <h3>{f.name}{foundationTitleSuffix}</h3>
           <p style={{ maxWidth: 560 }}>{f.description}</p>
-          <h5>{foundationsIncludedHeading}</h5>
+          <h4>{foundationsIncludedHeading}</h4>
           <div className={styles.tl}>
             {f.included.map((x, k) => <div key={`${cur}-${x}`} style={{ animationDelay: `${k * 0.08}s` }}>{x}</div>)}
           </div>
-          <h5>{foundationsPartnersHeading}</h5>
+          <h4>{foundationsPartnersHeading}</h4>
           <div className={styles.pr}>
             {foundationPartners.map((p) => <div key={p}>{p}<i aria-hidden="true">→</i></div>)}
           </div>

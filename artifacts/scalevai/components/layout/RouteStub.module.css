@@ -9,7 +9,7 @@
   padding: 0 var(--content-gutter);
 }
 
-.content h1 {
+.content .heading {
   font-size: clamp(26px, 2.6vw, 38px);
   font-weight: 400;
   line-height: 1.25;
@@ -31,3 +31,7 @@
 .anchors a {
   scroll-margin-top: calc(var(--nav) + 24px);
 }
+
+.stub:focus { outline: none; }
+.heading { margin-bottom: 28px; }
+.cta { margin-top: 36px; }

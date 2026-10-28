@@ -16,3 +16,14 @@
 .list{display:block;font-size:12px;opacity:.8;margin-top:8px}
 @media(max-width:1000px){.exp{height:420px}.title{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.ex,.arrow,.body,.on .body{transition:none}}
+@media(max-width:600px){
+.exp{flex-direction:column;height:auto;gap:12px}
+.ex,.on{flex:none;height:56px;transition:height .7s cubic-bezier(.6,0,.2,1)}
+.on{height:220px}
+.title,.on .title{top:0;left:16px;right:62px;height:52px;display:flex;align-items:center;padding-right:0;font-size:min(12px,3.5vw);line-height:1.3;white-space:nowrap;overflow-wrap:normal}
+.trigger::after{inset:0 -62px 0 -16px}
+.arrow{top:8px;right:14px}
+.body{left:16px;right:16px;bottom:14px;top:62px;display:flex;flex-direction:column;justify-content:flex-end;font-size:14px;line-height:1.4;overflow:hidden;max-width:none}
+.list{font-size:11px;margin-top:6px}
+}
+@media(max-width:600px) and (prefers-reduced-motion:reduce){.ex,.on{transition:none}}

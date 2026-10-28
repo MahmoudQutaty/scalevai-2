@@ -17,19 +17,19 @@ export default function Footer() {
             <Button href={routes.contact} variant="footerContact">{copy.footerCta}</Button>
           </div>
           <div>
-            <h5>{copy.footerServices}</h5>
+            <h2>{copy.footerServices}</h2>
             {services.map((s) => <Link key={s.slug} href={serviceHref(s.slug)}>{s.name}</Link>)}
           </div>
           <div>
-            <h5>{copy.footerIndustries}</h5>
+            <h2>{copy.footerIndustries}</h2>
             {industries.map((s) => <Link key={s.slug} href={industryHref(s.slug)}>{s.name}</Link>)}
           </div>
           <div>
-            <h5>{copy.footerCompany}</h5>
+            <h2>{copy.footerCompany}</h2>
             {companyLinks.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
           </div>
           <div>
-            <h5>{copy.footerTouch}</h5>
+            <h2>{copy.footerTouch}</h2>
             <a href={contact.phoneHref}>{contact.phoneLabel}</a>
             <a href={contact.emailHref}>{contact.emailLabel}</a>
             <a>{contact.address}</a>

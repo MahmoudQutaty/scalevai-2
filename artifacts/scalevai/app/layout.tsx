@@ -1,9 +1,11 @@
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 import { Outfit } from "next/font/google";
 import type { ReactNode } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import FloatingButtons from "@/components/layout/FloatingButtons";
+import SkipLink from "@/components/layout/SkipLink";
+import { pageMetadata } from "@/lib/metadata";
 import "@/styles/globals.css";
 
 const outfit = Outfit({
@@ -13,10 +15,14 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
-export const metadata: Metadata = {
-  title: "ScaleVAI | Engineering AI-powered digital systems that scale",
-  description:
+export const metadata = {
+  ...pageMetadata(
+    "ScaleVAI | Engineering AI-powered digital systems that scale",
     "We help growing businesses put AI, generative AI, AR/VR and data analytics to work, building the systems they run on and keeping them running.",
+  ),
+  applicationName: "ScaleVAI",
+  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {
@@ -33,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={outfit.variable}>
       <body>
+        <SkipLink />
         <Navbar />
         {children}
         <Footer />

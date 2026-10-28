@@ -40,11 +40,11 @@ function ServicesPanel({ onNavigate }: { onNavigate: () => void }) {
       </div>
       <div className={styles.mc} aria-live="polite">
         <div>
-          <h4><i className={styles.ic} aria-hidden="true">◆</i><Link href={serviceHref(s.slug)} onClick={onNavigate}>{s.name}</Link></h4>
+          <p className={styles.heading}><i className={styles.ic} aria-hidden="true">◆</i><Link href={serviceHref(s.slug)} onClick={onNavigate}>{s.name}</Link></p>
           <p className={styles.desc}>{s.summary}</p>
         </div>
         <div>
-          <h4><i className={styles.ic} aria-hidden="true">✓</i>{copy.whatWeDeliver}</h4>
+          <p className={styles.heading}><i className={styles.ic} aria-hidden="true">✓</i>{copy.whatWeDeliver}</p>
           <ul>{s.deliverables.map((d) => <li key={d}>{d}</li>)}</ul>
         </div>
       </div>

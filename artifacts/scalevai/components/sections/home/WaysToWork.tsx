@@ -25,7 +25,7 @@ export function WaysToWork() {
           const k = waysToWork[i];
           return (
             <div className={styles.c}>
-              <div><h4>{k.title}</h4><p>{k.description}</p></div>
+              <div><h3>{k.title}</h3><p>{k.description}</p></div>
               <em>— {k.footer}</em>
             </div>
           );

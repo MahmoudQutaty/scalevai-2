@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CountUp } from "@/components/ui/CountUp";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { introHeading, introParagraph, introPhrases, introTiles } from "@/data/intro";
@@ -51,7 +52,7 @@ export function Intro({ children }: { readonly children?: ReactNode }) {
       <div className={styles.w}>
         <div className={styles.ig}>
           <Reveal>
-            <h3>{introHeading}</h3>
+            <SectionHeading text={introHeading} className={styles.heading} />
             <p className={styles.srOnly}>{introPhrases.map((p) => p.text).join(", ")}</p>
             <div className={styles.rot} aria-hidden="true">
               <div

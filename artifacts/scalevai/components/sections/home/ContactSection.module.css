@@ -16,6 +16,11 @@
 .form ::placeholder{color:rgba(255,255,255,.6)}
 .send{margin-top:20px}
 .send>button{padding:12px 30px}
+.fields{border:0;min-width:0}
+.fields:disabled{cursor:wait}
+.send>button:disabled{opacity:.65;cursor:wait}
+.fieldError{color:#ffd4d4;font-size:14px;margin-top:8px}
+.form [aria-invalid="true"]{border-color:#ffaaaa}
 .status{margin-top:12px;font-size:14px;opacity:.9;min-height:1px}
 .status:empty{margin:0}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
