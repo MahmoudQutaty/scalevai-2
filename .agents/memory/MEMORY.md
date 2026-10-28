@@ -1,1 +1,2 @@
 - [Next.js preview origins](next-preview-origins.md) — local screenshots can pass while the live Replit preview's hot reload is origin-blocked.
+- [Reference mobile clipping](reference-mobile-clipping.md) — the original Intro clips horizontally at phone widths; preserve this during exact-copy phases.
