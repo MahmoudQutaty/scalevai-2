@@ -65,4 +65,58 @@ export const immersiveShowroomPage = {
       },
     ],
   },
+  platform: {
+    title: "Powered by Vizion",
+    subtitle: "Smart 3D Showroom platform",
+    features: [
+      "AR product view",
+      "AI guidance agents",
+      "Shopify and checkout sync",
+      "Behavior analytics",
+    ],
+  },
+  results: {
+    heading: "Sell smarter, not harder",
+    description:
+      "Immersive 3D showrooms shorten the path from first look to decision. Here is the impact reported on the Smart 3D Showroom platform.",
+    metrics: [
+      { value: "94%", label: "higher conversion on products with 3D and AR" },
+      { value: "10x", label: "lower showroom operating cost" },
+      { value: "35%", label: "fewer returns with AR visualization" },
+      { value: "24/7", label: "buyer access from any time zone" },
+    ],
+    note:
+      "94%, 10x and 35% are results reported by a Vizion client using the Smart 3D Showroom platform.",
+  },
+  process: {
+    heading: "From first look to confident decision in four steps",
+    description:
+      "We combine 3D capture and design with a proven showroom platform, so you launch on a solid foundation instead of a one-off build.",
+    steps: [
+      {
+        number: "1",
+        title: "Capture",
+        description:
+          "We scan or model the property, space or product range and gather the details buyers care about.",
+      },
+      {
+        number: "2",
+        title: "Compose",
+        description:
+          "We shape the journey around buyer questions, with hotspots, comparisons and guided stories.",
+      },
+      {
+        number: "3",
+        title: "Explore",
+        description:
+          "Buyers move through the showroom from a shared link on mobile, tablet or desktop, with no app.",
+      },
+      {
+        number: "4",
+        title: "Convert",
+        description:
+          "Enquiry, booking and add-to-cart actions sit inside the experience, while interest is highest.",
+      },
+    ],
+  },
 } as const;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import Button from "@/components/ui/Button";
 import { Tabs, type TabItem } from "@/components/ui/Tabs";
 import { immersiveShowroomPage as copy } from "@/data/immersive-showroom-page";
@@ -12,14 +12,11 @@ const items: readonly TabItem[] = copy.overview.tabs.map(({ id, label }, index) 
   prefix: `0${index + 1}`,
 }));
 
-type AccentStyle = CSSProperties & { "--showroom-blue": string };
-
 export default function ShowroomTabs() {
   const [selected, setSelected] = useState(0);
-  const accentStyle: AccentStyle = { "--showroom-blue": copy.overview.accent };
 
   return (
-    <div className={styles.tabs} style={accentStyle}>
+    <div className={styles.tabs}>
       <Tabs
         activeTabClassName={styles.activeTab}
         idBase="showroom-overview"
