@@ -18,3 +18,10 @@ export const industries: readonly Industry[] = [
 ];
 
 export const industryHref = (slug: string): string => `/industries#${slug}`;
+
+export const industryCarousel = {
+  heading: "Challenges we solve.\nSound familiar?",
+  partnersLabel: "Products & partners:",
+  demoLabel: "Book a demo ›",
+  demoHref: "#talk",
+} as const;

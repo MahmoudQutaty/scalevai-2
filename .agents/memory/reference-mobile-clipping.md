@@ -1,10 +1,10 @@
 ---
-name: Reference mobile clipping
-description: A confirmed mobile visual quirk in the original ScaleVAI homepage.
+name: Mobile Intro sizing
+description: The user's explicit correction to the reference's mobile Intro clipping.
 ---
 
-The supplied HTML's Intro clips paragraph and tile content horizontally at a 390px viewport. This was confirmed by rendering the original reference at the same viewport as the Next.js page.
+The reference's mobile horizontal clipping is a bug, not a requirement. On phones every rotating Intro phrase, including "BUILD CUSTOM SOFTWARE", must fit on one line from 320px wide upward. Desktop must stay as is.
 
-**Why:** The user requires an identical copy and explicitly prohibits unapproved improvements. The clipping is in the reference, not a new porting defect.
+**Why:** The user explicitly corrected the earlier decision to preserve the clipping.
 
-**How to apply:** Do not silently change the Intro's grid sizing to remove this clipping during exact-copy phases. If the user asks for a responsive correction, change it then and update this note. Explicit requested behavior still takes priority over reference implementation quirks.
+**How to apply:** Use phone-only responsive font sizing and grid containment. Do not wrap, remove, or truncate phrases, and do not change desktop typography to solve a phone-width issue.

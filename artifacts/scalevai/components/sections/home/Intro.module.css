@@ -167,6 +167,11 @@
   .wide { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 600px) {
+  .ig > div { min-width: 0; }
+  .rot { font-size: clamp(18px, 5.8vw, 30px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bars i {
     animation-play-state: paused;

@@ -1,0 +1,5 @@
+.w{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-gutter)}
+.c{flex:none;width:var(--cw,380px);min-height:290px;border-radius:24px;background:linear-gradient(160deg,#0b2d86,#0a50cc);padding:32px;display:flex;flex-direction:column;justify-content:space-between}
+.c h4{font-size:26px;font-weight:600;margin-bottom:12px}
+.c p{opacity:.9}
+.c em{font-style:normal;font-weight:500;font-size:15px}

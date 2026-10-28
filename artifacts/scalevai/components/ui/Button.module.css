@@ -11,3 +11,4 @@
 .outline{border:1.5px solid #3b82ff;background:linear-gradient(90deg,#0f62e8,#073d9c);border-radius:99px;padding:6px 20px;font-weight:500;box-shadow:0 0 16px rgba(15,98,232,.45);transition:.3s}
 .outline:hover{box-shadow:0 0 26px rgba(15,98,232,.85)}
 .outlineCompact{font-size:13px;padding:5px 16px}
+.demo{background:#fff;color:#111;border-radius:99px;padding:9px 24px;font-weight:500;display:inline-block}

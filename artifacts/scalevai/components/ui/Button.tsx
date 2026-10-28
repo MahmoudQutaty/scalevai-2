@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import styles from "./Button.module.css";
 
-export type ButtonVariant = "pill" | "pillAlt" | "ghost" | "ai" | "white" | "outline" | "outlineCompact" | "footerContact";
+export type ButtonVariant = "pill" | "pillAlt" | "ghost" | "ai" | "white" | "outline" | "outlineCompact" | "footerContact" | "demo";
 
 const variantClass: Record<ButtonVariant, string> = {
   pill: styles.pill,
@@ -13,6 +13,7 @@ const variantClass: Record<ButtonVariant, string> = {
   outline: styles.outline,
   outlineCompact: `${styles.outline} ${styles.outlineCompact}`,
   footerContact: styles.pill,
+  demo: styles.demo,
 };
 
 /* Reference footer: inline style="padding:8px 22px;display:inline-flex" (opacity .8 from .fc a still applies). */

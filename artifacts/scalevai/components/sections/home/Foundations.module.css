@@ -1,0 +1,26 @@
+.w{max-width:var(--content-max);margin:0 auto;padding:0 var(--content-gutter)}
+.pan{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;margin-bottom:70px}
+.sidew,.big{min-width:0}
+.side button{display:block;width:100%;text-align:left;padding:18px 0;border-bottom:1px solid var(--line);opacity:.45;font-size:17px;transition:.4s}
+.side small{display:block;font-size:13px}
+.side .on{opacity:1}
+.big{border-radius:26px;background:linear-gradient(135deg,#0e5ad9,#2a82ff);padding:34px;position:relative;box-shadow:0 20px 50px rgba(0,30,120,.4)}
+.big h3{font-size:clamp(22px,2.4vw,32px);font-weight:500;margin-bottom:8px}
+.big h5{font-weight:500;font-size:18px;margin:26px 0 14px}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tl div{background:#fff;color:#122;border-radius:12px;height:90px;display:grid;place-items:center;text-align:center;padding:8px;font-size:14px;font-weight:500;animation:pop .5s backwards}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+.pr{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pr div{background:rgba(0,30,120,.45);border-radius:12px;padding:18px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:20px;cursor:pointer;transition:.3s}
+.pr i{width:30px;height:30px;flex:none;border:1px solid #fff;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:14px;transition:.3s}
+.pr div:hover i{background:#fff;color:#0e5ad9}
+.pr div:hover{transform:translateY(-3px)}
+.sn{display:none}
+@media (max-width:1000px){
+  .pan{grid-template-columns:minmax(0,1fr)}.tl,.pr{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pr div{min-width:0;overflow-wrap:anywhere}
+  .side{display:flex;overflow:auto}.side button{white-space:nowrap;padding:12px}
+  .sidew{display:flex;align-items:center;gap:12px}.side{overflow:hidden;flex:1;min-width:0}
+  .sn{display:block;font-size:34px;line-height:1;flex:none;margin-left:4px}
+}
+@media (prefers-reduced-motion: reduce){.tl div{animation:none}.side button,.pr div,.pr i{transition:none}}

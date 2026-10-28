@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { CountUp } from "@/components/ui/CountUp";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -11,7 +11,7 @@ import styles from "./Intro.module.css";
 const PHRASES = [...introPhrases, introPhrases[0]];
 const LAST = introPhrases.length;
 
-export function Intro() {
+export function Intro({ children }: { readonly children?: ReactNode }) {
   const reduced = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
@@ -92,6 +92,7 @@ export function Intro() {
           ))}
         </div>
       </div>
+      {children}
     </section>
   );
 }
