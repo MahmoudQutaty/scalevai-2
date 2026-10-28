@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CatalogueDetail from "@/components/catalogue/CatalogueDetail";
+import WorkforceIntelligencePage from "@/components/catalogue/workforce-intelligence/WorkforceIntelligencePage";
 import { solutions } from "@/data/solutions";
+import { workforceIntelligencePage } from "@/data/workforce-intelligence-page";
 import { pageMetadata } from "@/lib/metadata";
 
 type SolutionPageProps = Readonly<{
@@ -19,7 +21,9 @@ export async function generateMetadata({ params }: SolutionPageProps): Promise<M
   const solution = solutions.find((item) => item.slug === slug);
   if (!solution) notFound();
 
-  return pageMetadata(`${solution.name} | ScaleVAI`, solution.summary);
+  return slug === "workforce-intelligence"
+    ? pageMetadata(workforceIntelligencePage.title, workforceIntelligencePage.description)
+    : pageMetadata(`${solution.name} | ScaleVAI`, solution.summary);
 }
 
 export default async function SolutionPage({ params }: SolutionPageProps) {
@@ -27,5 +31,9 @@ export default async function SolutionPage({ params }: SolutionPageProps) {
   const solution = solutions.find((item) => item.slug === slug);
   if (!solution) notFound();
 
-  return <CatalogueDetail kind="solution" item={solution} />;
+  return slug === "workforce-intelligence" ? (
+    <WorkforceIntelligencePage />
+  ) : (
+    <CatalogueDetail kind="solution" item={solution} />
+  );
 }
