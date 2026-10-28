@@ -119,4 +119,74 @@ export const immersiveShowroomPage = {
       },
     ],
   },
+  industries: {
+    heading: "3D showrooms for the industries that sell high-consideration spaces",
+    description: "Built for teams selling to buyers who cannot always visit in person.",
+    items: [
+      {
+        name: "Real estate developers",
+        description:
+          "Sell off-plan and completed units to overseas investors without waiting for a site visit.",
+        details: "Off-plan launches · Completed units · Investor previews",
+        colors: ["#6d28d9", "#1e1b4b"],
+      },
+      {
+        name: "Retail and premium brands",
+        description:
+          "Show flagship spaces, materials and finishes that photography alone cannot convey.",
+        details: "Flagship stores · Pop-ups · Material detail",
+        colors: ["#9d174d", "#1f0a1a"],
+      },
+      {
+        name: "Hospitality and venues",
+        description:
+          "Help planners picture layout and capacity before they request a proposal.",
+        details: "Hotels · Event halls · Layout and capacity",
+        colors: ["#b45309", "#1c1208"],
+      },
+      {
+        name: "International sales teams",
+        description:
+          "Share one link that answers buyer questions across every time zone.",
+        details: "One shared link · Fewer repeat calls · Any time zone",
+        colors: ["#047857", "#06201a"],
+      },
+      {
+        name: "Manufacturing and B2B",
+        description:
+          "Let distributors and buyers inspect equipment and product ranges remotely.",
+        details: "Equipment demos · Product ranges · Distributor onboarding",
+        colors: ["#0e7490", "#06202a"],
+      },
+      {
+        name: "Automotive showrooms",
+        description:
+          "Present models, trims and colours online and route interest to a test drive.",
+        details: "Models and trims · Colour options · Test-drive booking",
+        colors: ["#1d4ed8", "#0a1233"],
+      },
+      {
+        name: "Furniture and interiors",
+        description:
+          "Preview pieces at scale, in context, before the customer commits.",
+        details: "Scale and fit · Finishes · AR in the home",
+        colors: ["#334155", "#0f172a"],
+      },
+    ],
+    bookCallAriaLabel: "Book a call about",
+  },
+  caseStudy: {
+    label: "USE CASE · DUBAI, UAE",
+    heading: "Selling premium units to overseas buyers",
+    description:
+      "The sales team shares one immersive link before the call. Buyers arrive already understanding layout, finish and flow, so the conversation moves straight to commercial questions.",
+    bookCall: "Discover how we’d do it ›",
+    colors: ["#0a2a8a", "#1a5cff 60%", "#5b2fd0"],
+    steps: [
+      { title: "Before the call", description: "Buyer explores the layout and finishes" },
+      { title: "On the call", description: "Terms, payment plan and timing" },
+      { title: "After the call", description: "Link is shared with partners and family" },
+      { title: "Across time zones", description: "No scheduling around site visits" },
+    ],
+  },
 } as const;

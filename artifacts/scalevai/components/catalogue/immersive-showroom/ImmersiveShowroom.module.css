@@ -379,6 +379,209 @@
   font-size: 15.5px;
 }
 
+.industrySection {
+  padding: 80px 0;
+  background: #000;
+  color: #fff;
+}
+
+.industryHeading.industryHeading {
+  margin-bottom: 0;
+  font-size: clamp(28px, 3.2vw, 46px);
+  font-weight: 600;
+  letter-spacing: -.5px;
+  line-height: 1.2;
+}
+
+.industryLead {
+  color: rgba(255, 255, 255, .75);
+}
+
+.industryCards {
+  display: flex;
+  height: 400px;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.industryCard {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background: var(--g);
+  cursor: pointer;
+  transition: flex .7s cubic-bezier(.6, 0, .2, 1);
+}
+
+.industryCard::before {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, .35), transparent 40%),
+    linear-gradient(180deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .75));
+  content: "";
+}
+
+.industryCardActive {
+  flex: 5.5;
+}
+
+.industrySelect {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.industryTitle {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  right: 16px;
+  left: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  pointer-events: none;
+}
+
+.industryCardActive .industryTitle {
+  padding-right: 50px;
+  font-size: 20px;
+}
+
+.industryLink {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  right: 14px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  place-items: center;
+  transition: .4s;
+}
+
+.industryCardActive .industryLink {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.industryLink:hover {
+  background: #fff;
+  color: #0e5ad9;
+}
+
+.industryDetails {
+  position: absolute;
+  z-index: 2;
+  right: 24px;
+  bottom: 22px;
+  left: 24px;
+  max-width: 520px;
+  font-size: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.industryCardActive .industryDetails {
+  opacity: 1;
+  transition-delay: .35s;
+}
+
+.industryDetails p {
+  margin: 0;
+}
+
+.industryDetails u {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  opacity: .8;
+  text-decoration: none;
+}
+
+.caseSection {
+  padding: 80px 0;
+  background: #fff;
+  color: #0b1a3a;
+}
+
+.caseCard {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 34px;
+  margin-top: 40px;
+  border-radius: 26px;
+  padding: 44px;
+  background: var(--case-gradient);
+  color: #fff;
+}
+
+.caseCopy small {
+  letter-spacing: 2px;
+  opacity: .8;
+}
+
+.caseTitle.caseTitle {
+  margin: 8px 0 12px;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.caseCopy p {
+  margin-bottom: 22px;
+  opacity: .92;
+}
+
+.caseButton.caseButton {
+  border-radius: 99px;
+  padding: 10px 24px;
+  background: #fff;
+  box-shadow: none;
+  color: #0b1a3a;
+  font-size: 15px;
+  transition: .3s;
+}
+
+.caseButton.caseButton:hover {
+  transform: translateY(-3px);
+}
+
+.caseFacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.caseFacts > div {
+  border-radius: 14px;
+  padding: 18px;
+  background: rgba(255, 255, 255, .16);
+  font-size: 14px;
+}
+
+.caseFacts b {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 17px;
+}
+
 @media (max-width: 1000px) {
   .hero {
     padding-bottom: 90px;
@@ -395,6 +598,18 @@
 
   .tabPanel {
     padding: 28px;
+  }
+
+  .industryCards {
+    height: 420px;
+  }
+
+  .industryTitle {
+    font-size: 12px;
+  }
+
+  .caseCard {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -422,6 +637,14 @@
   .stepsGrid {
     grid-template-columns: 1fr;
   }
+
+  .caseCard {
+    padding: 28px;
+  }
+
+  .caseFacts {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -429,7 +652,11 @@
   .heroSecondaryButton,
   .tabButton,
   .tabButtonItem,
-  .stepCard {
+  .stepCard,
+  .industryCard,
+  .industryLink,
+  .industryDetails,
+  .caseButton {
     transition: none;
   }
 }

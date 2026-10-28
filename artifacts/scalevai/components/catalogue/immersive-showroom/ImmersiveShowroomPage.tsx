@@ -5,6 +5,8 @@ import ShowroomOverviewSection from "./ShowroomOverviewSection";
 import ShowroomPlatformStrip from "./ShowroomPlatformStrip";
 import ShowroomResultsSection from "./ShowroomResultsSection";
 import ShowroomProcessSection from "./ShowroomProcessSection";
+import ShowroomIndustriesSection from "./ShowroomIndustriesSection";
+import ShowroomCaseStudySection from "./ShowroomCaseStudySection";
 
 type ShowroomStyle = CSSProperties & { "--showroom-blue": string };
 
@@ -18,6 +20,8 @@ export default function ImmersiveShowroomPage() {
       <ShowroomPlatformStrip />
       <ShowroomResultsSection />
       <ShowroomProcessSection />
+      <ShowroomIndustriesSection />
+      <ShowroomCaseStudySection />
     </main>
   );
 }
