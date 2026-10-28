@@ -21,17 +21,20 @@ const variantStyle: Partial<Record<ButtonVariant, CSSProperties>> = {
   footerContact: { padding: "8px 22px", display: "inline-flex" },
 };
 
-export interface ButtonProps {
-  href: string;
+interface SharedButtonProps {
   variant?: ButtonVariant;
   icon?: string;
   className?: string;
-  external?: boolean;
   onClick?: () => void;
   children: ReactNode;
 }
 
-export default function Button({ href, variant = "pill", icon, className, external = false, onClick, children }: ButtonProps) {
+export type ButtonProps = SharedButtonProps & (
+  | { href: string; external?: boolean; type?: never; disabled?: never }
+  | { href?: never; external?: never; type?: "button" | "submit" | "reset"; disabled?: boolean }
+);
+
+export default function Button({ href, variant = "pill", icon, className, external = false, type = "button", disabled, onClick, children }: ButtonProps) {
   const cls = className ? `${variantClass[variant]} ${className}` : variantClass[variant];
   const style = variantStyle[variant];
   const content = (
@@ -40,6 +43,9 @@ export default function Button({ href, variant = "pill", icon, className, extern
       {icon ? <> <i aria-hidden="true">{icon}</i></> : null}
     </>
   );
+  if (href === undefined) {
+    return <button className={cls} style={style} type={type} disabled={disabled} onClick={onClick}>{content}</button>;
+  }
   if (external) {
     return <a className={cls} style={style} href={href} onClick={onClick}>{content}</a>;
   }

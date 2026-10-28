@@ -8,8 +8,8 @@ export const routes = {
   services: "/services",
   industries: "/industries",
   about: "/about",
-  partners: "/partners",
-  contact: "/contact",
+  partners: "/#partners",
+  contact: "/#talk",
   careers: "/careers",
 } as const;
 

@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import styles from "./Reveal.module.css";
 
 interface RevealProps {
   readonly children: ReactNode;
   readonly className?: string;
+  readonly style?: CSSProperties;
 }
 
-export function Reveal({ children, className }: RevealProps) {
+export function Reveal({ children, className, style }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
 
@@ -36,7 +37,7 @@ export function Reveal({ children, className }: RevealProps) {
 
   const cls = [styles.rv, shown ? styles.in : "", className ?? ""].filter(Boolean).join(" ");
   return (
-    <div ref={ref} className={cls}>
+    <div ref={ref} className={cls} style={style}>
       {children}
     </div>
   );
