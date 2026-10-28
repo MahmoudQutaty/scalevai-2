@@ -9,6 +9,7 @@ export const immersiveShowroomPage = {
     { label: "Solutions", href: "/services" },
   ],
   hero: {
+    video: "/Immersive%20Showroom.mp4",
     heading: "Immersive 3D Showroom for buyers who can’t visit in person",
     description:
       "Turn your properties, stores and products into interactive 3D experiences. Remote and international buyers explore at their own pace, from any device, and arrive at the call ready to decide.",

@@ -7,6 +7,7 @@ export const workforceIntelligencePage = {
     { label: "Solutions", href: "/services" },
   ],
   category: "AI PRESENCE & ATTENDANCE VERIFICATION",
+  video: "/Workforce%20Intelligence.mp4",
   heading: ["Workforce", "Intelligence"],
   bookCall: "Book a call",
   howItWorks: "See how it works ↓",

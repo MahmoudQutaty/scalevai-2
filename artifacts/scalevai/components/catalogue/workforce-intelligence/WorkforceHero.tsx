@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { CountUp } from "@/components/ui/CountUp";
+import HeroVideoBackground from "@/components/ui/HeroVideoBackground";
 import { workforceIntelligencePage as copy } from "@/data/workforce-intelligence-page";
 import styles from "./WorkforceHero.module.css";
 
 export default function WorkforceHero() {
   return (
     <header className={styles.hero} id="top">
+      <HeroVideoBackground className={styles.media} src={copy.video} />
       <div className={styles.container}>
         <div className={styles.grid}>
           <div className={styles.copy}>
