@@ -329,16 +329,18 @@
 
 .stepsGrid {
   display: grid;
+  grid-auto-rows: 1fr;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
   margin-top: 40px;
 }
 
 .stepReveal {
-  display: block;
+  display: flex;
 }
 
 .stepCard {
+  flex: 1;
   min-height: 210px;
   border: 1px solid #d7e3fa;
   border-radius: 20px;
