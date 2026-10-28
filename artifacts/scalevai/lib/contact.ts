@@ -1,6 +1,5 @@
 import { z } from "zod";
-import { interestOptions } from "@/data/home-sections";
-import { contactFeedback, contactLimits } from "@/data/contact-form";
+import { contactFeedback, contactInterestOptions, contactLimits } from "@/data/contact-form";
 
 const copy = contactFeedback.validation;
 
@@ -10,7 +9,7 @@ export const contactSchema = z.object({
   email: z.string({ required_error: copy.email, invalid_type_error: copy.email }).trim().email(copy.email).max(contactLimits.email, copy.emailLength),
   phone: z.string().trim().max(contactLimits.phone, copy.phoneLength)
     .refine((value) => value === "" || (/^[+()\d.\s-]+$/.test(value) && value.replace(/\D/g, "").length >= 6), copy.phone).optional(),
-  interest: z.enum(interestOptions, { errorMap: () => ({ message: copy.interest }) }),
+  interest: z.enum(contactInterestOptions, { errorMap: () => ({ message: copy.interest }) }),
   message: z.string({ required_error: copy.message, invalid_type_error: copy.message }).trim().min(1, copy.message).max(contactLimits.message, copy.messageLength),
 });
 

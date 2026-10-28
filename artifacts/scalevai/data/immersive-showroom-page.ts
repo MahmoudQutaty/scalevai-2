@@ -1,3 +1,5 @@
+import { showroomInterestOptions } from "@/data/contact-form";
+
 export const immersiveShowroomPage = {
   title: "Immersive 3D Showroom for Real Estate & Retail in Dubai | ScaleVAI",
   description:
@@ -258,5 +260,23 @@ export const immersiveShowroomPage = {
           "Yes. Showroom content and AI guidance can be delivered in English and Arabic for buyers across the UAE and GCC.",
       },
     ],
+  },
+  requestDemo: {
+    heading: "See your space in a new dimension.",
+    text:
+      "Ask for a personalised demo and see how an immersive showroom would present your properties or products to buyers anywhere. A strategy conversation, not a sales pitch.",
+    bigText: "Let’s Talk!",
+    form: {
+      heading: "Request a live demo",
+      name: "Full name",
+      company: "Company",
+      email: "Business email",
+      phone: "Phone or WhatsApp",
+      interestPlaceholder: "I sell…",
+      interestOptions: showroomInterestOptions,
+      message: "Tell us about your space or product",
+      submit: "Request demo",
+      success: "Thanks, we have recorded your enquiry (demo).",
+    },
   },
 } as const;

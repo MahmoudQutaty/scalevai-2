@@ -1,4 +1,10 @@
 // Functional form/validation copy, separate from the approved marketing copy.
+import { interestOptions } from "./home-sections";
+
+export const showroomInterestOptions = ["Property", "Retail products", "Venues or hospitality", "Other"] as const;
+export const contactInterestOptions = [...interestOptions, ...showroomInterestOptions] as const;
+export type ContactInterest = (typeof contactInterestOptions)[number];
+
 export const contactFieldNames = ["name", "company", "email", "phone", "interest", "message"] as const;
 export type ContactField = (typeof contactFieldNames)[number];
 export type ContactFieldErrors = Partial<Record<ContactField, string>>;
@@ -15,7 +21,7 @@ export const contactFeedback = {
     name: "Enter your full name using at least two characters.",
     email: "Enter a valid business email address.",
     phone: "Enter a valid phone number, or leave it blank.",
-    interest: "Choose A service, An industry, or Partnering.",
+    interest: "Choose one of the available options.",
     message: "Enter a message.",
     nameLength: "Use no more than 120 characters for your name.",
     companyLength: "Use no more than 160 characters for your company.",
