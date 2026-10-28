@@ -98,4 +98,64 @@ export const workforceIntelligencePage = {
       },
     ],
   },
+  capabilities: {
+    label: "KEY CAPABILITIES",
+    heading: "Everything you need to trust your attendance data",
+    cards: [
+      {
+        title: "Multi-floor, multi-site coverage",
+        description:
+          "One dashboard for every floor, building, or site, no matter how many entrances you have.",
+        colors: ["#1d4ed8", "#7c3aed"],
+      },
+      {
+        title: "Real-time anomaly alerts",
+        description:
+          "Get notified the moment something looks wrong, instead of finding out in next week’s audit.",
+        colors: ["#b91c1c", "#7f1d1d"],
+      },
+      {
+        title: "HR & payroll integration",
+        description:
+          "Verified attendance data flows directly into your existing HR and payroll systems.",
+        colors: ["#0e7490", "#2563eb"],
+      },
+      {
+        title: "Privacy-conscious by design",
+        description:
+          "Built to verify presence, not to surveil, and configurable to your organization’s data policies.",
+        colors: ["#047857", "#0e7490"],
+      },
+      {
+        title: "Works with existing cameras",
+        description:
+          "No forklift upgrade required. Workforce Intelligence runs on the CCTV infrastructure you already have.",
+        colors: ["#312e81", "#0ea5e9"],
+      },
+      {
+        title: "Executive-ready reporting",
+        description:
+          "Exportable, audit-ready reports for management, compliance, and workforce planning.",
+        colors: ["#86198f", "#2563eb"],
+      },
+    ],
+  },
+  caseStudy: {
+    label: "PROVEN IN THE FIELD",
+    deployment: "LIVE DEPLOYMENT · DUBAI, UAE",
+    heading: "Leading UAE real estate developer",
+    description:
+      "5-floor office, 300+ staff. The card system had no exit tracking and no anomaly detection. ScaleVAI deployed AI presence verification across all floors, with a real-time management dashboard.",
+    metrics: [
+      { value: 100, suffix: "%", label: "Entry and exit coverage" },
+      { value: 85, suffix: "%+", label: "Reduction in manual CCTV review time" },
+      { value: 5, suffix: "", label: "Floors covered" },
+      { value: 300, suffix: "+", label: "Staff on site" },
+    ],
+    dashboardTitle: "Presence dashboard",
+    dashboardStatus: "● Live",
+    floors: ["Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5"],
+    floorCoverage: "100%",
+    chartCaption: "Entry and exit coverage by floor",
+  },
 } as const;

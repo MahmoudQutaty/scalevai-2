@@ -1,0 +1,329 @@
+.section {
+  padding: 80px 0;
+}
+
+.container {
+  width: min(100%, var(--content-max));
+  margin: 0 auto;
+  padding: 0 var(--content-gutter);
+}
+
+.capabilitiesSection {
+  padding-top: 20px;
+}
+
+.kicker {
+  margin-bottom: 12px;
+  color: #6fb0ff;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.capabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.flipCard {
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.flipInner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  perspective: 1400px;
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  will-change: transform;
+}
+
+.cardFront {
+  display: grid;
+  place-items: center;
+  transform: rotateY(0);
+  background:
+    radial-gradient(circle at 72% 22%, var(--accent-a), transparent 58%),
+    radial-gradient(circle at 18% 82%, var(--accent-b), transparent 55%),
+    #070c1d;
+  opacity: 1;
+  text-align: center;
+  transition:
+    transform .38s cubic-bezier(0, .1, .2, 1) .15s,
+    opacity 0s .15s;
+}
+
+.cardFront::before {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 8, 24, .42);
+  content: "";
+}
+
+.cardFront svg {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  width: 46%;
+  transform: translateX(-50%);
+  fill: none;
+  opacity: .38;
+  stroke: #cfe0ff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.cardTitle {
+  position: relative;
+  z-index: 1;
+  padding: 0 22px;
+  font-size: clamp(20px, 2.1vw, 32px);
+  font-weight: 500;
+  line-height: 1.3;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
+}
+
+.cardBack {
+  display: flex;
+  align-items: center;
+  transform: rotateY(90deg);
+  padding: clamp(22px, 2.4vw, 36px);
+  background: #1a6bff;
+  opacity: 0;
+  transition:
+    transform .15s cubic-bezier(.45, 0, 1, 1),
+    opacity 0s .15s;
+}
+
+.cardBack > span {
+  font-size: clamp(15px, 1.2vw, 19px);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.flipCard:hover .cardFront,
+.flipCard:focus-visible .cardFront,
+.flipCard.flipped .cardFront {
+  transform: rotateY(90deg);
+  opacity: 0;
+  transition:
+    transform .15s cubic-bezier(.45, 0, 1, 1),
+    opacity 0s .15s;
+}
+
+.flipCard:hover .cardBack,
+.flipCard:focus-visible .cardBack,
+.flipCard.flipped .cardBack {
+  transform: rotateY(0);
+  opacity: 1;
+  transition:
+    transform .38s cubic-bezier(0, .1, .2, 1) .15s,
+    opacity 0s .15s;
+}
+
+.flipCard:focus-visible .cardFront {
+  box-shadow: 0 0 0 3px #6fb0ff;
+}
+
+.caseStudy {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 34px;
+  padding: 40px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #0e5ad9, #1b2f8f 70%, #2a1b7a);
+  box-shadow: 0 30px 70px rgba(0, 30, 120, .45);
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, .25);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.live::before {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #35e08a;
+  content: "";
+  animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .25;
+  }
+}
+
+.caseTitle {
+  margin-bottom: 12px;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 600;
+}
+
+.caseDescription {
+  max-width: 520px;
+  margin-bottom: 22px;
+  opacity: .92;
+}
+
+.caseMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.caseMetric {
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .12);
+  font-size: 13px;
+}
+
+.caseMetricValue {
+  display: block;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.dashboardReveal {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard {
+  width: 100%;
+  align-self: center;
+  padding: 18px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+  color: #112233;
+}
+
+.dashboardHeading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dashboardHeading em {
+  color: #16a34a;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.floorRow {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr) 42px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 11px;
+  font-size: 12.5px;
+}
+
+.barTrack {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #e3eafc;
+}
+
+.barFill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #3d86ff, #0f62e8);
+  transition: width 1.4s cubic-bezier(.2, .7, .2, 1);
+}
+
+.dashboardVisible .barFill {
+  width: 100%;
+}
+
+.chart {
+  display: block;
+  width: 100%;
+  height: 70px;
+  margin-top: 6px;
+}
+
+.chartCaption {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  opacity: .6;
+}
+
+@media (max-width: 1000px) {
+  .capabilityGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .caseStudy {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .capabilitiesSection {
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .capabilityGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .flipCard {
+    aspect-ratio: 5 / 4;
+  }
+
+  .caseStudy {
+    padding: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardFront,
+  .cardBack,
+  .live::before {
+    transition: none;
+    animation: none;
+  }
+
+  .dashboardVisible .barFill,
+  .barFill {
+    width: 100%;
+    transition: none;
+  }
+}
