@@ -2,3 +2,4 @@
 - [Mobile Intro sizing](reference-mobile-clipping.md) — reference clipping is a bug; phrases must fit one line from 320px upward without changing desktop sizing.
 - [Settled visual verification](settled-visual-verification.md) — fresh anchor screenshots can capture Reveal blur and smooth scrolling before they finish.
 - [Workspace package versions](workspace-package-versions.md) — unversioned pnpm additions can reuse the workspace's preferred major; verify before using newer APIs.
+- [Service page FAQs](service-page-faqs.md) — service FAQs should reuse the Workforce two-column design and accordion with page-specific source copy.

@@ -223,7 +223,9 @@ export const immersiveShowroomPage = {
     ],
   },
   faq: {
+    label: "FAQ",
     heading: "Immersive Showroom FAQs",
+    bookCall: "Book a call",
     items: [
       {
         question: "What is an immersive 3D showroom?",

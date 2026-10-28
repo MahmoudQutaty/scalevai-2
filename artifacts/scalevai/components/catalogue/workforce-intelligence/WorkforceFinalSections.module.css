@@ -16,92 +16,6 @@
   letter-spacing: 2px;
 }
 
-.faqSection {
-  background: linear-gradient(180deg, var(--navy), #0a1f4d 50%, var(--navy));
-}
-
-.faqGrid {
-  display: grid;
-  grid-template-columns: 330px minmax(0, 1fr);
-  gap: 26px;
-  align-items: start;
-}
-
-.faqIntro {
-  max-width: 300px;
-  opacity: .8;
-}
-
-.faqButton {
-  margin-top: 18px;
-}
-
-.questions {
-  min-width: 0;
-}
-
-.question {
-  margin-bottom: 14px;
-  padding: 22px 26px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, .06);
-  cursor: pointer;
-  transition: .4s;
-}
-
-.questionOpen {
-  background: linear-gradient(135deg, #0e5ad9, #0a3a9a);
-}
-
-.questionHeading {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.questionTrigger {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  text-align: left;
-}
-
-.questionTrigger:focus-visible {
-  outline: 2px solid #6fb0ff;
-  outline-offset: 5px;
-}
-
-.questionIcon {
-  flex: none;
-}
-
-.questionOpen .questionIcon {
-  transform: rotate(180deg);
-}
-
-.answer {
-  max-height: 0;
-  overflow: hidden;
-  opacity: .9;
-  transition: max-height .5s, margin .5s;
-}
-
-.questionOpen .answer {
-  max-height: 200px;
-  margin-top: 12px;
-}
-
-.answerText {
-  margin: 0;
-}
-
 .sectionHeading {
   margin-bottom: 28px;
   font-size: clamp(26px, 2.6vw, 38px);
@@ -360,7 +274,6 @@
 }
 
 @media (max-width: 1000px) {
-  .faqGrid,
   .contactGrid,
   .ctaBanner {
     grid-template-columns: 1fr;
@@ -380,8 +293,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .question,
-  .answer,
   .relatedCard,
   .orb,
   .contactForm input,
