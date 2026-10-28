@@ -5,6 +5,7 @@ import { useRef, type KeyboardEvent, type ReactNode } from "react";
 export interface TabItem {
   readonly id: string;
   readonly label: string;
+  readonly prefix?: string;
 }
 
 interface TabsProps {
@@ -15,6 +16,8 @@ interface TabsProps {
   readonly onSelect: (index: number) => void;
   readonly renderPanel: (item: TabItem, index: number) => ReactNode;
   readonly orientation?: "horizontal" | "vertical";
+  readonly selectOnHover?: boolean;
+  readonly prefixClassName?: string;
   readonly listClassName?: string;
   readonly tabClassName?: string;
   readonly activeTabClassName?: string;
@@ -22,8 +25,8 @@ interface TabsProps {
 }
 
 export function Tabs({
-  idBase, label, items, selected, onSelect, renderPanel, orientation = "vertical",
-  listClassName, tabClassName, activeTabClassName, panelClassName,
+  idBase, label, items, selected, onSelect, renderPanel, orientation = "vertical", selectOnHover = false,
+  prefixClassName, listClassName, tabClassName, activeTabClassName, panelClassName,
 }: TabsProps) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const tabId = (i: number) => `${idBase}-tab-${items[i]?.id ?? i}`;
@@ -65,8 +68,10 @@ export function Tabs({
               tabIndex={on ? 0 : -1}
               className={cls || undefined}
               onClick={() => onSelect(i)}
+              onMouseEnter={selectOnHover ? () => onSelect(i) : undefined}
               onKeyDown={(e) => onKeyDown(e, i)}
             >
+              {t.prefix ? <span className={prefixClassName}>{t.prefix}</span> : null}
               {t.label}
             </button>
           );
