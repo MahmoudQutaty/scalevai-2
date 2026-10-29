@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -203,9 +204,26 @@ export function ContactSection({
             </form>
           </Reveal>
         </div>
-        <div className={styles.off}>
+        <div className={`${styles.off} ${variant === "service" ? styles.officeList : ""}`}>
           {contactSection.offices.map((o) => (
-            <div key={o.label} className={styles.card}><b>{o.label}</b>{o.value}</div>
+            variant === "service" ? (
+              <div key={o.label} className={styles.officeRow}>
+                <div className={styles.officeCopy}>
+                  <b>{o.label}</b>
+                  <span>{o.value}</span>
+                </div>
+                <Image
+                  src={o.icon}
+                  alt=""
+                  aria-hidden="true"
+                  width={64}
+                  height={64}
+                  className={styles.officeIcon}
+                />
+              </div>
+            ) : (
+              <div key={o.label} className={styles.card}><b>{o.label}</b>{o.value}</div>
+            )
           ))}
         </div>
         {includePartnerBanner ? <PartnerBanner onBecomePartner={becomePartner} disabled={pending} /> : null}

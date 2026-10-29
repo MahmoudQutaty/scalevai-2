@@ -100,10 +100,10 @@ export const contactSection = {
     success: "Thanks, we have recorded your enquiry (demo).",
   },
   offices: [
-    { label: "DUBAI, UAE", value: "Al Sagar Tower, Floor 29, Sheikh Zayed Road" },
-    { label: "CALL OR WHATSAPP", value: contact.phoneLabel },
-    { label: "EMAIL", value: contact.emailLabel },
-    { label: "ENGINEERING CENTRE", value: "Bangalore, India" },
+    { label: "DUBAI, UAE", value: "Al Sagar Tower, Floor 29, Sheikh Zayed Road", icon: "/BurjKhalifa.svg" },
+    { label: "CALL OR WHATSAPP", value: contact.phoneLabel, icon: "/phone-call.svg" },
+    { label: "EMAIL", value: contact.emailLabel, icon: "/Email.svg" },
+    { label: "ENGINEERING CENTRE", value: "Bangalore, India", icon: "/Taj-Mahal.svg" },
   ],
 } as const;
 
