@@ -32,7 +32,7 @@ export default function ShowroomHero() {
           <Button className={styles.heroPrimaryButton} href="/contact" variant="pill">
             {copy.hero.bookCall}
           </Button>
-          <Button className={styles.heroSecondaryButton} href="#how-it-works" variant="pillAlt">
+          <Button className={styles.heroSecondaryButton} href="#how-it-works" variant="white">
             {copy.hero.howItWorks}
           </Button>
         </div>
