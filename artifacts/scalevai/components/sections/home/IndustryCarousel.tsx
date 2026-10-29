@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, type CSSProperties, type MouseEvent } from "react";
 import Button from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Slider, type SliderApi } from "@/components/ui/Slider";
+import { Slider } from "@/components/ui/Slider";
 import { solutions, solutionCopy, solutionHref } from "@/data/solutions";
+import SolutionSelector from "./SolutionSelector";
 import styles from "./IndustryCarousel.module.css";
 
 const BARS = [0, 1, 2, 3, 4, 5];
@@ -27,45 +27,6 @@ function Device({ name }: { readonly name: string }) {
 }
 
 export function IndustryCarousel() {
-  const tabDrag = useRef<{ startX: number; startScrollLeft: number; moved: boolean } | null>(null);
-  const suppressTabClick = useRef(false);
-
-  const startTabDrag = (event: MouseEvent<HTMLDivElement>) => {
-    if (event.button !== 0) return;
-    suppressTabClick.current = false;
-    tabDrag.current = {
-      startX: event.clientX,
-      startScrollLeft: event.currentTarget.scrollLeft,
-      moved: false,
-    };
-  };
-
-  const moveTabDrag = (event: MouseEvent<HTMLDivElement>, go: SliderApi["go"], activeIndex: number) => {
-    const drag = tabDrag.current;
-    if (!drag) return;
-    const distance = drag.startX - event.clientX;
-    if (Math.abs(distance) > 4) drag.moved = true;
-    if (!drag.moved) return;
-    event.preventDefault();
-    event.currentTarget.scrollLeft = drag.startScrollLeft + distance;
-    const hoveredTab = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>("[data-tab-index]"))
-      .find((button) => {
-        const bounds = button.getBoundingClientRect();
-        return event.clientX >= bounds.left
-          && event.clientX <= bounds.right
-          && event.clientY >= bounds.top
-          && event.clientY <= bounds.bottom;
-      });
-    if (!hoveredTab) return;
-    const hoveredIndex = Number(hoveredTab.dataset.tabIndex);
-    if (Number.isInteger(hoveredIndex) && hoveredIndex !== activeIndex) go(hoveredIndex);
-  };
-
-  const finishTabDrag = () => {
-    suppressTabClick.current = tabDrag.current?.moved ?? false;
-    tabDrag.current = null;
-  };
-
   return (
     <section id="challenges">
       <div className={styles.w}>
@@ -93,38 +54,7 @@ export function IndustryCarousel() {
             </div>
           );
         }}
-        beforeControls={({ index, go }) => (
-          <div
-            className={styles.tabs}
-            role="group"
-            aria-label={solutionCopy.heading.replace("\n", " ")}
-            onMouseDown={startTabDrag}
-            onMouseMove={(event) => moveTabDrag(event, go, index)}
-            onMouseUp={finishTabDrag}
-            onMouseLeave={finishTabDrag}
-            onClickCapture={(event) => {
-              if (!suppressTabClick.current) return;
-              suppressTabClick.current = false;
-              event.preventDefault();
-              event.stopPropagation();
-            }}
-          >
-            {solutions.map((x, i) => (
-              <button
-                key={x.slug}
-                type="button"
-                aria-pressed={i === index}
-                className={i === index ? styles.on : undefined}
-                style={{ "--c": x.colors[0] } as CSSProperties}
-                onClick={() => go(i)}
-                draggable={false}
-                data-tab-index={i}
-              >
-                {x.name}<small>{x.deployment}</small>
-              </button>
-            ))}
-          </div>
-        )}
+        beforeControls={(api) => <SolutionSelector {...api} />}
       />
     </section>
   );
