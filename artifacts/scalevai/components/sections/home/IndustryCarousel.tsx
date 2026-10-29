@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useRef, type CSSProperties, type MouseEvent } from "react";
 import Button from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -27,6 +27,34 @@ function Device({ name }: { readonly name: string }) {
 }
 
 export function IndustryCarousel() {
+  const tabDrag = useRef<{ startX: number; startScrollLeft: number; moved: boolean } | null>(null);
+  const suppressTabClick = useRef(false);
+
+  const startTabDrag = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.button !== 0) return;
+    suppressTabClick.current = false;
+    tabDrag.current = {
+      startX: event.clientX,
+      startScrollLeft: event.currentTarget.scrollLeft,
+      moved: false,
+    };
+  };
+
+  const moveTabDrag = (event: MouseEvent<HTMLDivElement>) => {
+    const drag = tabDrag.current;
+    if (!drag) return;
+    const distance = drag.startX - event.clientX;
+    if (Math.abs(distance) > 4) drag.moved = true;
+    if (!drag.moved) return;
+    event.preventDefault();
+    event.currentTarget.scrollLeft = drag.startScrollLeft + distance;
+  };
+
+  const finishTabDrag = () => {
+    suppressTabClick.current = tabDrag.current?.moved ?? false;
+    tabDrag.current = null;
+  };
+
   return (
     <section id="challenges">
       <div className={styles.w}>
@@ -55,7 +83,21 @@ export function IndustryCarousel() {
           );
         }}
         beforeControls={({ index, go }) => (
-          <div className={styles.tabs}>
+          <div
+            className={styles.tabs}
+            role="group"
+            aria-label={solutionCopy.heading.replace("\n", " ")}
+            onMouseDown={startTabDrag}
+            onMouseMove={moveTabDrag}
+            onMouseUp={finishTabDrag}
+            onMouseLeave={finishTabDrag}
+            onClickCapture={(event) => {
+              if (!suppressTabClick.current) return;
+              suppressTabClick.current = false;
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+          >
             {solutions.map((x, i) => (
               <button
                 key={x.slug}
@@ -64,6 +106,7 @@ export function IndustryCarousel() {
                 className={i === index ? styles.on : undefined}
                 style={{ "--c": x.colors[0] } as CSSProperties}
                 onClick={() => go(i)}
+                draggable={false}
               >
                 {x.name}<small>{x.deployment}</small>
               </button>
