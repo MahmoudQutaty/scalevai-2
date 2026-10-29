@@ -4,7 +4,7 @@ import { useRef, type CSSProperties, type MouseEvent } from "react";
 import Button from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Slider } from "@/components/ui/Slider";
+import { Slider, type SliderApi } from "@/components/ui/Slider";
 import { solutions, solutionCopy, solutionHref } from "@/data/solutions";
 import styles from "./IndustryCarousel.module.css";
 
@@ -40,7 +40,7 @@ export function IndustryCarousel() {
     };
   };
 
-  const moveTabDrag = (event: MouseEvent<HTMLDivElement>) => {
+  const moveTabDrag = (event: MouseEvent<HTMLDivElement>, go: SliderApi["go"], activeIndex: number) => {
     const drag = tabDrag.current;
     if (!drag) return;
     const distance = drag.startX - event.clientX;
@@ -48,6 +48,17 @@ export function IndustryCarousel() {
     if (!drag.moved) return;
     event.preventDefault();
     event.currentTarget.scrollLeft = drag.startScrollLeft + distance;
+    const hoveredTab = Array.from(event.currentTarget.querySelectorAll<HTMLButtonElement>("[data-tab-index]"))
+      .find((button) => {
+        const bounds = button.getBoundingClientRect();
+        return event.clientX >= bounds.left
+          && event.clientX <= bounds.right
+          && event.clientY >= bounds.top
+          && event.clientY <= bounds.bottom;
+      });
+    if (!hoveredTab) return;
+    const hoveredIndex = Number(hoveredTab.dataset.tabIndex);
+    if (Number.isInteger(hoveredIndex) && hoveredIndex !== activeIndex) go(hoveredIndex);
   };
 
   const finishTabDrag = () => {
@@ -88,7 +99,7 @@ export function IndustryCarousel() {
             role="group"
             aria-label={solutionCopy.heading.replace("\n", " ")}
             onMouseDown={startTabDrag}
-            onMouseMove={moveTabDrag}
+            onMouseMove={(event) => moveTabDrag(event, go, index)}
             onMouseUp={finishTabDrag}
             onMouseLeave={finishTabDrag}
             onClickCapture={(event) => {
@@ -107,6 +118,7 @@ export function IndustryCarousel() {
                 style={{ "--c": x.colors[0] } as CSSProperties}
                 onClick={() => go(i)}
                 draggable={false}
+                data-tab-index={i}
               >
                 {x.name}<small>{x.deployment}</small>
               </button>
