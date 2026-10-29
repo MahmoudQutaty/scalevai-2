@@ -14,6 +14,6 @@ export const heroPartners: readonly HeroPartner[] = [
   { name: "Droidal", logo: "/droidal.png", description: "Healthcare AI agents for front-desk and billing work.", keyWord: "Agents", phrase: "taking repetitive work off your team’s plate" },
   { name: "Vizion", logo: "/vizion.png", description: "Immersive 3D tours and virtual showrooms for property and retail.", keyWord: "3D", phrase: "tours, showrooms and AR/VR experiences" },
   { name: "CRITI AI", logo: "/criti-ai.png", description: "An AI learning companion with personal support for every student.", keyWord: "AI", phrase: "tutoring and mentoring, less admin for schools" },
-  { name: "Minebrat", logo: "/minebrat.avif", description: "A technology partner we bring to buyers across the region.", keyWord: "GCC", phrase: "and Africa reach, with local contracts and support" },
+  { name: "Minebrat", logo: "/minebrat.png", description: "A technology partner we bring to buyers across the region.", keyWord: "GCC", phrase: "and Africa reach, with local contracts and support" },
   { name: "Wellnooz", logo: "/wellnooz.png", description: "An integrative medicine platform we deploy and support.", keyWord: "Care", phrase: "live in weeks, supported after launch" },
 ];
