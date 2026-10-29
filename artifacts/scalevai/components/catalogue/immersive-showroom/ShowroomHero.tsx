@@ -8,7 +8,7 @@ export default function ShowroomHero() {
   return (
     <header className={styles.hero} id="top">
       <HeroVideoBackground className={styles.media} src={copy.hero.video} />
-      <div className={styles.container}>
+      <div className={styles.heroContainer}>
         <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
           <ol>
             {copy.breadcrumb.map((item) => (

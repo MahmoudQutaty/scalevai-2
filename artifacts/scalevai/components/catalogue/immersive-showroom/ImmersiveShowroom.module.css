@@ -21,13 +21,19 @@
 .container {
   position: relative;
   z-index: 2;
+  width: min(100%, 1360px);
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: min(100%, 1360px);
-  margin: 0 auto;
   padding: calc(var(--nav) + 20px) 4vw 26px;
   text-align: center;
 }
@@ -417,16 +423,16 @@
 }
 
 .industryCards {
-  display: flex;
-  height: 400px;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
   margin-top: 40px;
 }
 
 .industryCard {
   position: relative;
-  flex: 1;
   min-width: 0;
+  min-height: 280px;
   overflow: hidden;
   border: 2px solid rgba(255, 255, 255, .25);
   border-radius: 20px;
@@ -445,7 +451,7 @@
 }
 
 .industryCardActive {
-  flex: 5.5;
+  border-color: rgba(255, 255, 255, .7);
 }
 
 .industrySelect {
@@ -678,7 +684,7 @@
     height: clamp(230px, 62vw, 420px);
   }
 
-  .container {
+  .heroContainer {
     display: block;
     width: 100%;
     padding: 26px 6vw 6px;
@@ -747,11 +753,11 @@
   }
 
   .industryCards {
-    height: 420px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .industryTitle {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .caseCard {
@@ -792,6 +798,13 @@
     grid-template-columns: 1fr;
   }
 
+  .industryCards {
+    grid-template-columns: 1fr;
+  }
+
+  .industryCard {
+    min-height: 240px;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 1000px) {
