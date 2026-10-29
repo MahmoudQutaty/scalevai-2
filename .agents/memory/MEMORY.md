@@ -3,3 +3,4 @@
 - [Settled visual verification](settled-visual-verification.md) — fresh anchor screenshots can capture Reveal blur and smooth scrolling before they finish.
 - [Workspace package versions](workspace-package-versions.md) — unversioned pnpm additions can reuse the workspace's preferred major; verify before using newer APIs.
 - [Service page FAQs](service-page-faqs.md) — service FAQs should reuse the Workforce two-column design and accordion with page-specific source copy.
+- [Shared service-page components](shared-service-page-components.md) — reuse or extend shared UI across ScaleVAI pages instead of rebuilding repeated patterns.

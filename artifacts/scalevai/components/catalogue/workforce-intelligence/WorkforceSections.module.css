@@ -80,143 +80,15 @@
   font-size: 17px;
 }
 
-.howSection {
-  padding-top: 20px;
-}
-
-.processGrid {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 60px;
-}
-
-.stickyContent {
-  position: sticky;
-  top: 110px;
-  align-self: start;
-}
-
-.processDescription {
-  opacity: .85;
-}
-
-.cta {
-  margin-top: 28px;
-  padding: 26px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #0f62e8, #6a3df0 60%, #16c1e6);
-}
-
-.cta h3 {
-  margin-bottom: 10px;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.cta p {
-  margin-bottom: 18px;
-  font-size: 15px;
-  opacity: .95;
-}
-
-.timeline {
-  position: relative;
-  padding-left: 46px;
-}
-
-.timeline::before {
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  left: 14px;
-  width: 2px;
-  background: linear-gradient(180deg, #3d86ff, rgba(61, 134, 255, .1));
-  content: "";
-}
-
-.step {
-  position: relative;
-  display: block;
-  width: 100%;
-  padding: 0 0 46px;
-  border: 0;
-  background: none;
-  color: inherit;
-  cursor: pointer;
-  font: inherit;
-  text-align: left;
-  opacity: .4;
-  transition: .5s;
-}
-
-.step:last-child {
-  padding-bottom: 0;
-}
-
-.step::before {
-  position: absolute;
-  top: 6px;
-  left: -39px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid #3d86ff;
-  border-radius: 50%;
-  background: var(--navy);
-  content: "";
-  transition: .4s;
-}
-
-.activeStep {
-  opacity: 1;
-}
-
-.activeStep::before {
-  background: #3d86ff;
-  box-shadow: 0 0 0 6px rgba(61, 134, 255, .25);
-}
-
-.step:focus-visible {
-  outline: 2px solid #6fb0ff;
-  outline-offset: 8px;
-}
-
-.step small {
-  color: #6fb0ff;
-  font-size: 12px;
-  letter-spacing: 2px;
-}
-
-.stepTitle {
-  display: block;
-  margin: 6px 0 8px;
-  font-size: 28px;
-  font-weight: 500;
-}
-
-.stepDescription {
-  display: block;
-  max-width: 460px;
-  opacity: .85;
-}
-
 @media (max-width: 1000px) {
-  .problemGrid,
-  .processGrid {
+  .problemGrid {
     grid-template-columns: 1fr;
-  }
-
-  .stickyContent {
-    position: static;
   }
 
   .section {
     padding: 56px 0;
   }
 
-  .howSection {
-    padding-top: 20px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -226,8 +98,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .challenge,
-  .step {
+  .challenge {
     transition: none;
   }
 }

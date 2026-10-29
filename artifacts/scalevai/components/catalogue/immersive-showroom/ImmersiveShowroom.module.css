@@ -299,14 +299,6 @@
   color: #0b1a3a;
 }
 
-.phaseHeading.phaseHeading {
-  margin-bottom: 0;
-  font-size: clamp(28px, 3.2vw, 46px);
-  font-weight: 600;
-  letter-spacing: -.5px;
-  line-height: 1.2;
-}
-
 .sectionLead {
   max-width: 820px;
   margin: 14px auto 0;
@@ -344,64 +336,6 @@
   color: #7a88a8;
   font-size: 12px;
   text-align: center;
-}
-
-.processSection {
-  padding: 80px 0;
-  background: #eef3fd;
-  color: #0b1a3a;
-}
-
-.stepsGrid {
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-top: 40px;
-}
-
-.stepReveal {
-  display: flex;
-}
-
-.stepCard {
-  flex: 1;
-  min-height: 210px;
-  border: 1px solid #d7e3fa;
-  border-radius: 20px;
-  padding: 28px 24px;
-  background: #fff;
-  transition: .35s;
-}
-
-.stepCard:hover {
-  transform: translateY(-6px);
-  border-color: var(--showroom-blue);
-  box-shadow: 0 18px 40px rgba(26, 92, 255, .16);
-}
-
-.stepCard i {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  margin-bottom: 16px;
-  border-radius: 12px;
-  background: var(--showroom-blue);
-  color: #fff;
-  font-style: normal;
-  font-weight: 600;
-  place-items: center;
-}
-
-.stepCard h3 {
-  margin-bottom: 8px;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.stepCard p {
-  color: #4a5878;
-  font-size: 15.5px;
 }
 
 .industrySection {
@@ -623,8 +557,7 @@
     grid-template-columns: 1fr;
   }
 
-  .statsGrid,
-  .stepsGrid {
+  .statsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -656,10 +589,6 @@
 
   .statCard {
     padding: 22px 10px;
-  }
-
-  .stepsGrid {
-    grid-template-columns: 1fr;
   }
 
   .caseCard {
@@ -700,7 +629,6 @@
   .heroSecondaryButton,
   .tabButton,
   .tabButtonItem,
-  .stepCard,
   .caseButton,
   .whyCard {
     transition: none;
