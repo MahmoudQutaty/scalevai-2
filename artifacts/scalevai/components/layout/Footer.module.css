@@ -1,9 +1,20 @@
 .footer{padding:30px 0 20px;background:var(--navy)}
 .w{max-width:1360px;margin:0 auto;padding:0 4vw}
-.fc{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:30px;font-size:14px}
+.fc{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:30px;font-size:14px}
 .fc h2{font-size:19px;font-weight:500;margin-bottom:14px}
 .fc a{display:block;opacity:.8;padding:4px 0}
 .fc a:hover{opacity:1;color:#6fb0ff}
 .tag{margin:12px 0 16px;opacity:.8}
+.officeSection{margin-top:42px}
+.officeSection h2{font-size:19px;font-weight:500;margin-bottom:14px}
+.officeList{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.officeItem{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0;font-size:12px;overflow-wrap:anywhere}
+.officeCopy{min-width:0}
+.officeCopy b{display:block;font-size:13px;letter-spacing:.4px;margin-bottom:5px}
+.officeCopy span{display:block;opacity:.8}
+.officeIcon{flex:0 0 auto;width:48px;height:64px;object-fit:contain;filter:brightness(0) saturate(100%) drop-shadow(0 0 1.5px rgba(255,255,255,.75));transition:filter .25s ease}
+.officeItem:hover .officeIcon{filter:brightness(0) invert(1)}
 .cp{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-size:13px;opacity:.7}
-@media(max-width:1000px){.fc{grid-template-columns:1fr 1fr}}
+@media(max-width:1000px){.fc{grid-template-columns:1fr 1fr}.officeList{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.officeList{grid-template-columns:1fr;gap:14px}}
+@media(prefers-reduced-motion:reduce){.officeIcon{transition:none}}

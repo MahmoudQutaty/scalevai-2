@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import { companyLinks, contact, copy, routes } from "@/data/nav";
+import { companyLinks, copy, routes } from "@/data/nav";
 import { industries, industryHref } from "@/data/industries";
 import { solutionHref, solutions } from "@/data/solutions";
 import Logo from "./Logo";
+import OfficeDetails from "./OfficeDetails";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -28,13 +29,11 @@ export default function Footer() {
             <h2>{copy.footerCompany}</h2>
             {companyLinks.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
           </div>
-          <div>
-            <h2>{copy.footerTouch}</h2>
-            <a href={contact.phoneHref}>{contact.phoneLabel}</a>
-            <a href={contact.emailHref}>{contact.emailLabel}</a>
-            <a>{contact.address}</a>
-          </div>
         </div>
+        <section className={styles.officeSection}>
+          <h2>{copy.footerTouch}</h2>
+          <OfficeDetails />
+        </section>
         <div className={styles.cp}>{copy.copyright}</div>
       </div>
     </footer>
