@@ -38,7 +38,7 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={outfit.variable}>
-      <body>
+      <body suppressHydrationWarning>
         <SkipLink />
         <Navbar />
         {children}
