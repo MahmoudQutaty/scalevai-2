@@ -58,12 +58,12 @@
 .btns .pill{justify-content:space-between;font-size:15px}
 .trust{flex-direction:column;align-items:flex-start;gap:12px;padding:18px 6vw 34px}
 .trust p{width:auto}
-.logos{display:block;gap:10px;width:100%;overflow-x:auto;overflow-y:hidden;padding:4px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.logos{display:block;gap:10px;width:calc(100% + 12vw);margin-left:-6vw;overflow-x:auto;overflow-y:hidden;padding:4px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .logos::-webkit-scrollbar{display:none}
 .logosTrack{display:flex;width:max-content}
-.logoGroup,.logoGroup[aria-hidden="true"]{display:flex;flex:0 0 max-content;width:max-content;gap:10px;padding-right:10px}
-.logos button{height:56px;font-size:15px;gap:7px;padding:6px 8px}
-.logos button{flex:0 0 min(48vw,220px)}
+.logoGroup,.logoGroup[aria-hidden="true"]{display:flex;flex:0 0 max-content;width:max-content;gap:28px;padding-right:28px}
+.logos button{height:56px;font-size:15px;gap:7px;padding:6px 0;border:0;border-radius:0;background:transparent;backdrop-filter:none;box-shadow:none;flex:0 0 auto}
+.logos button.on,.logos button:hover{transform:none;border-color:transparent;background:transparent}
 .partnerLogo{width:26px;height:26px}
 }
 @media(min-width:601px) and (max-width:1000px){.btns{flex-direction:row;align-items:center;justify-content:flex-start;flex-wrap:nowrap;gap:14px}.btns .pill{font-size:15px;white-space:nowrap}}
