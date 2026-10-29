@@ -107,47 +107,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 16px;
-  margin-top: 28px;
+  gap: 18px;
+  margin-top: 30px;
   animation: enter 1s .75s backwards;
-}
-
-.heroPrimaryButton.heroPrimaryButton,
-.heroSecondaryButton.heroSecondaryButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 99px;
-  padding: 10px 24px;
-  font-size: 15px;
-  font-weight: 500;
-  transition: .3s;
-}
-
-.heroPrimaryButton.heroPrimaryButton {
-  background: var(--blue);
-  color: #fff;
-  box-shadow: 0 8px 22px rgba(26, 92, 255, .35);
-}
-
-.heroSecondaryButton.heroSecondaryButton {
-  background: #fff;
-  color: var(--ink);
-  box-shadow: none;
-}
-
-.heroPrimaryButton.heroPrimaryButton:hover,
-.heroSecondaryButton.heroSecondaryButton:hover {
-  transform: translateY(-3px);
-}
-
-.heroPrimaryButton.heroPrimaryButton:hover {
-  box-shadow: 0 8px 22px rgba(26, 92, 255, .35);
-}
-
-.heroSecondaryButton.heroSecondaryButton:hover {
-  background: #fff;
-  box-shadow: none;
 }
 
 @keyframes enter {
@@ -570,8 +532,7 @@
     margin-top: 22px;
   }
 
-  .actions .heroPrimaryButton,
-  .actions .heroSecondaryButton {
+  .actions > a {
     justify-content: space-between;
   }
 
@@ -632,8 +593,7 @@
     gap: 14px;
   }
 
-  .actions .heroPrimaryButton,
-  .actions .heroSecondaryButton {
+  .actions > a {
     white-space: nowrap;
   }
 }
@@ -647,8 +607,7 @@
     opacity: 1;
   }
 
-  .heroPrimaryButton,
-  .heroSecondaryButton,
+  .actions > a,
   .tabButton,
   .tabButtonItem,
   .caseButton,

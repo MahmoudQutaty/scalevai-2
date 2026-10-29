@@ -29,10 +29,10 @@ export default function ShowroomHero() {
         </ul>
         <p className={styles.heroDescription}>{copy.hero.description}</p>
         <div className={styles.actions}>
-          <Button className={styles.heroPrimaryButton} href="/contact" variant="pill">
-            {copy.hero.bookCall}
+          <Button href="/contact" icon="✆" variant="pill">
+            {copy.hero.bookCall.replace(/ ›$/, "")}
           </Button>
-          <Button className={styles.heroSecondaryButton} href="#how-it-works" variant="white">
+          <Button href="#how-it-works" variant="ghost">
             {copy.hero.howItWorks}
           </Button>
         </div>
