@@ -27,7 +27,10 @@
 .tip b{color:#d4ff3a;font-size:19px;font-weight:600;flex:none}
 .trust{position:relative;z-index:3;display:flex;align-items:center;gap:22px;padding:0 4vw 26px;max-width:1360px;width:100%;margin:0 auto;font-size:15px}
 .trust p{flex:none;width:150px;text-align:left;opacity:.9;line-height:1.3}
-.logos{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;flex:1}
+.logos{flex:1;min-width:0}
+.logosTrack{width:100%}
+.logoGroup{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;width:100%}
+.logoGroup[aria-hidden="true"]{display:none}
 .logos button{min-width:0;height:70px;padding:8px 10px;border-radius:16px;background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.04));border:1px solid var(--line);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:19px;cursor:pointer;transition:.35s}
 .partnerLogo{display:block;flex:0 0 auto;width:30px;height:30px;object-fit:contain}
 .partnerName{display:block;white-space:nowrap}
@@ -55,11 +58,13 @@
 .btns .pill{justify-content:space-between;font-size:15px}
 .trust{flex-direction:column;align-items:flex-start;gap:12px;padding:18px 6vw 34px}
 .trust p{width:auto}
-.logos{display:flex;gap:10px;width:100%;overflow-x:auto;overflow-y:hidden;padding:4px 0;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.logos{display:block;gap:10px;width:100%;overflow-x:auto;overflow-y:hidden;padding:4px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .logos::-webkit-scrollbar{display:none}
-.logos button{flex:0 0 min(48vw,220px);scroll-snap-align:start}
+.logosTrack{display:flex;width:max-content}
+.logoGroup,.logoGroup[aria-hidden="true"]{display:flex;flex:0 0 max-content;width:max-content;gap:10px;padding-right:10px}
 .logos button{height:56px;font-size:15px;gap:7px;padding:6px 8px}
+.logos button{flex:0 0 min(48vw,220px)}
 .partnerLogo{width:26px;height:26px}
 }
 @media(min-width:601px) and (max-width:1000px){.btns{flex-direction:row;align-items:center;justify-content:flex-start;flex-wrap:nowrap;gap:14px}.btns .pill{font-size:15px;white-space:nowrap}}
-@media(prefers-reduced-motion:reduce){.scene,.tip,.logos button,.hero h1,.chk,.sub,.btns{animation:none!important;transition:none!important}.hero h1,.chk,.sub,.btns{opacity:1}}
+@media(prefers-reduced-motion:reduce){.scene,.tip,.logos button,.hero h1,.chk,.sub,.btns{animation:none!important;transition:none!important}.logoGroup[aria-hidden="true"]{display:none}.hero h1,.chk,.sub,.btns{opacity:1}}

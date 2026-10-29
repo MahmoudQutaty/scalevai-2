@@ -28,10 +28,13 @@ export default function Hero() {
 
   const heroRef = useRef<HTMLElement>(null);
   const tipRef = useRef<HTMLDivElement>(null);
+  const logosRef = useRef<HTMLDivElement>(null);
+  const logosTrackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const videoRef = useRef<HTMLVideoElement>(null);
   const activeRef = useRef<number>(0);
   const hoveredRef = useRef<boolean>(false);
+  const pointerDownRef = useRef<boolean>(false);
   const reducedRef = useRef<boolean>(reduced);
   const cycleTimer = useRef<number | undefined>(undefined);
   const tipTimer = useRef<number | undefined>(undefined);
@@ -99,6 +102,92 @@ export default function Hero() {
       ro?.disconnect();
     };
   }, [show]);
+
+  // Auto-scroll the small-screen logo strip while preserving native swipe scrolling.
+  useEffect(() => {
+    const viewport = logosRef.current;
+    const track = logosTrackRef.current;
+    if (!viewport || !track || reduced) return;
+
+    const smallScreen = window.matchMedia("(max-width: 1000px)");
+    let frame: number | null = null;
+    let previousTime: number | null = null;
+    let pausedUntil = 0;
+
+    const stop = () => {
+      if (frame !== null) window.cancelAnimationFrame(frame);
+      frame = null;
+      previousTime = null;
+    };
+
+    const tick = (time: number) => {
+      if (!smallScreen.matches) {
+        stop();
+        return;
+      }
+
+      const elapsed = previousTime === null ? 0 : Math.min(time - previousTime, 48);
+      previousTime = time;
+      const loopWidth = track.scrollWidth / 2;
+
+      if (
+        loopWidth > 0 &&
+        time >= pausedUntil &&
+        !pointerDownRef.current &&
+        !hoveredRef.current &&
+        document.visibilityState === "visible"
+      ) {
+        viewport.scrollLeft += elapsed * 0.045;
+        if (viewport.scrollLeft >= loopWidth) {
+          viewport.scrollLeft %= loopWidth;
+        }
+      }
+
+      frame = window.requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (smallScreen.matches && frame === null) {
+        previousTime = null;
+        frame = window.requestAnimationFrame(tick);
+      }
+    };
+    const onBreakpointChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        start();
+      } else {
+        stop();
+        viewport.scrollLeft = 0;
+      }
+    };
+    const onPointerDown = () => {
+      pointerDownRef.current = true;
+    };
+    const onPointerEnd = () => {
+      pointerDownRef.current = false;
+      pausedUntil = performance.now() + 1000;
+    };
+    const onWheel = () => {
+      pausedUntil = performance.now() + 1000;
+    };
+
+    viewport.addEventListener("pointerdown", onPointerDown);
+    viewport.addEventListener("pointerup", onPointerEnd);
+    viewport.addEventListener("pointercancel", onPointerEnd);
+    viewport.addEventListener("wheel", onWheel, { passive: true });
+    smallScreen.addEventListener("change", onBreakpointChange);
+    start();
+
+    return () => {
+      stop();
+      pointerDownRef.current = false;
+      viewport.removeEventListener("pointerdown", onPointerDown);
+      viewport.removeEventListener("pointerup", onPointerEnd);
+      viewport.removeEventListener("pointercancel", onPointerEnd);
+      viewport.removeEventListener("wheel", onWheel);
+      smallScreen.removeEventListener("change", onBreakpointChange);
+    };
+  }, [reduced]);
 
   // Video: autoplay unless reduced motion; remove on failure.
   useEffect(() => {
@@ -171,31 +260,47 @@ export default function Hero() {
       </div>
       <div className={styles.trust}>
         <p>{hero.trust}</p>
-        <div className={styles.logos} role="group" aria-label={hero.trust}>
-          {heroPartners.map((p, i) => (
-            <button
-              key={p.name}
-              type="button"
-              ref={(el) => { cardRefs.current[i] = el; }}
-              className={i === active ? styles.on : undefined}
-              aria-pressed={i === active}
-              aria-label={`${p.name}: ${p.description} ${p.keyWord} ${p.phrase}`}
-              onMouseEnter={() => onEnter(i)}
-              onMouseLeave={onLeave}
-              onFocus={() => onEnter(i)}
-              onBlur={onLeave}
-              onClick={() => onSelect(i)}
-            >
-              <Image
-                alt=""
-                className={styles.partnerLogo}
-                height={32}
-                src={p.logo}
-                width={32}
-              />
-              <span className={styles.partnerName}>{p.name}</span>
-            </button>
-          ))}
+        <div aria-label={hero.trust} className={styles.logos} ref={logosRef} role="group">
+          <div className={styles.logosTrack} ref={logosTrackRef}>
+            {[0, 1].map((groupIndex) => {
+              const isDuplicate = groupIndex === 1;
+              return (
+                <div
+                  aria-hidden={isDuplicate ? true : undefined}
+                  className={styles.logoGroup}
+                  key={groupIndex}
+                >
+                  {heroPartners.map((p, i) => (
+                    <button
+                      key={p.name}
+                      type="button"
+                      ref={(el) => {
+                        if (!isDuplicate) cardRefs.current[i] = el;
+                      }}
+                      tabIndex={isDuplicate ? -1 : undefined}
+                      className={i === active ? styles.on : undefined}
+                      aria-pressed={i === active}
+                      aria-label={`${p.name}: ${p.description} ${p.keyWord} ${p.phrase}`}
+                      onMouseEnter={() => onEnter(i)}
+                      onMouseLeave={onLeave}
+                      onFocus={() => onEnter(i)}
+                      onBlur={onLeave}
+                      onClick={() => onSelect(i)}
+                    >
+                      <Image
+                        alt=""
+                        className={styles.partnerLogo}
+                        height={32}
+                        src={p.logo}
+                        width={32}
+                      />
+                      <span className={styles.partnerName}>{p.name}</span>
+                    </button>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </header>
