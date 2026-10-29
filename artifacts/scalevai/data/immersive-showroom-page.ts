@@ -92,6 +92,7 @@ export const immersiveShowroomPage = {
       "94%, 10x and 35% are results reported by a Vizion client using the Smart 3D Showroom platform.",
   },
   process: {
+    label: "HOW IT WORKS",
     heading: "From first look to confident decision in four steps",
     description:
       "We combine 3D capture and design with a proven showroom platform, so you launch on a solid foundation instead of a one-off build.",
