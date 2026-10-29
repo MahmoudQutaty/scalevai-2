@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 import { copy, routes } from "@/data/nav";
 import Logo from "./Logo";
 import MegaMenu from "./MegaMenu";
-import type { MegaKind } from "./MegaMenu";
+import type { MegaKind, MegaPosition } from "./MegaMenu";
 import MobileDrawer from "./MobileDrawer";
 import styles from "./Navbar.module.css";
 
@@ -17,8 +17,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menu, setMenu] = useState<MegaKind | null>(null);
   const [drawer, setDrawer] = useState<boolean>(false);
+  const [menuPosition, setMenuPosition] = useState<MegaPosition>({ "--mx": "2vw", "--mw": "900px", "--ax": "60px" });
   const closeTimer = useRef<number | undefined>(undefined);
   const burgerRef = useRef<HTMLButtonElement>(null);
+  const navContentRef = useRef<HTMLDivElement>(null);
   const triggers = useRef<Record<MegaKind, HTMLAnchorElement | null>>({ services: null, industries: null });
   const wasOpen = useRef<boolean>(false);
   const drawerOpenRef = useRef(false);
@@ -85,8 +87,20 @@ export default function Navbar() {
 
   useEffect(() => () => { document.body.style.overflow = ""; }, []);
 
-  const openMenu = (k: MegaKind) => {
+  const openMenu = (k: MegaKind, trigger: HTMLDivElement) => {
     window.clearTimeout(closeTimer.current);
+    const navContent = navContentRef.current;
+    if (navContent) {
+      const triggerRect = trigger.getBoundingClientRect();
+      const navRect = navContent.getBoundingClientRect();
+      const navStyle = window.getComputedStyle(navContent);
+      const leftEdge = navRect.left + Number.parseFloat(navStyle.paddingLeft);
+      const rightEdge = navRect.right - Number.parseFloat(navStyle.paddingRight);
+      const width = Math.min(900, rightEdge - leftEdge);
+      const center = triggerRect.left + triggerRect.width / 2;
+      const left = Math.max(leftEdge, Math.min(center - width / 2, rightEdge - width));
+      setMenuPosition({ "--mx": `${left}px`, "--mw": `${width}px`, "--ax": `${center - left}px` });
+    }
     setMenu(k);
   };
   const leaveMenu = (k: MegaKind) => {
@@ -109,9 +123,9 @@ export default function Navbar() {
   const dd = (k: MegaKind, label: string, href: string) => (
     <div
       className={menu === k ? `${styles.dd} ${styles.open}` : styles.dd}
-      onMouseEnter={() => openMenu(k)}
+      onMouseEnter={(event) => openMenu(k, event.currentTarget)}
       onMouseLeave={() => leaveMenu(k)}
-      onFocus={() => openMenu(k)}
+      onFocus={(event) => openMenu(k, event.currentTarget)}
       onBlur={onBlur(k)}
       onKeyDown={onKey(k)}
     >
@@ -125,14 +139,14 @@ export default function Navbar() {
       >
         {label}
       </Link>
-      <MegaMenu kind={k} id={`mega-${k}`} open={menu === k} onNavigate={closeNow} />
+      <MegaMenu kind={k} id={`mega-${k}`} open={menu === k} onNavigate={closeNow} position={menuPosition} />
     </div>
   );
 
   return (
     <>
       <nav className={scrolled ? `${styles.nav} ${styles.scrolled}` : styles.nav} aria-label="Main" data-scrolled={scrolled}>
-        <div className={styles.w}>
+        <div className={styles.w} ref={navContentRef}>
           <Logo />
           <div className={styles.links}>
             <Button href={routes.services} variant="ai">{copy.ai}</Button>

@@ -1,0 +1,46 @@
+:root {
+  --nav: 68px;
+  --navy: #030b1c;
+  --ink: #071536;
+  --blue: #0f62e8;
+  --line: rgba(255, 255, 255, .2);
+  color-scheme: dark;
+}
+
+.svHeaderPreview,
+.svHeaderPreview * {
+  box-sizing: border-box;
+}
+
+.svHeaderPreview {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--navy);
+  color: #fff;
+  font-family: Outfit, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.svHeaderPreview a {
+  text-decoration: none;
+}
+
+.svHeaderPreview a[class*="white"] {
+  color: var(--ink);
+}
+
+.svHeaderPreview button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+.svHeaderPage {
+  min-height: 240vh;
+  padding: 180px 4vw 0;
+  text-align: center;
+  background: linear-gradient(180deg, #0a2155, #030b1c);
+}
