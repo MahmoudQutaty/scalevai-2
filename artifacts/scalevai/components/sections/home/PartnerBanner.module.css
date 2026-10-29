@@ -1,1 +1,1 @@
-.pb{border-radius:20px;background:linear-gradient(90deg,#0f62e8,#0a3a9a);padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:60px;font-size:20px;scroll-margin-top:calc(var(--nav) + 20px)}
+.pb{border-radius:20px;background:linear-gradient(90deg,#0f62e8,#0a3a9a);padding:26px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:60px 0;font-size:20px;scroll-margin-top:calc(var(--nav) + 20px)}
