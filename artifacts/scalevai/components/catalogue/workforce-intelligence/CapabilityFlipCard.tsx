@@ -1,13 +1,16 @@
 "use client";
 
 import { Fragment, useState, type CSSProperties, type ReactNode } from "react";
-import { workforceIntelligencePage } from "@/data/workforce-intelligence-page";
 import styles from "./WorkforceShowcase.module.css";
 
-type Capability = (typeof workforceIntelligencePage.capabilities.cards)[number];
+export interface CapabilityCardContent {
+  readonly title: string;
+  readonly description: string;
+  readonly colors: readonly [string, string];
+}
 
 interface CapabilityFlipCardProps {
-  readonly capability: Capability;
+  readonly capability: CapabilityCardContent;
   readonly iconIndex: number;
 }
 

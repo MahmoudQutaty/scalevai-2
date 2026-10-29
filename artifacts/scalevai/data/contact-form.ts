@@ -2,7 +2,9 @@
 import { interestOptions } from "./home-sections";
 
 export const showroomInterestOptions = ["Property", "Retail products", "Venues or hospitality", "Other"] as const;
-export const contactInterestOptions = [...interestOptions, ...showroomInterestOptions] as const;
+export const talentContactInterestOptions = ["Talent Intelligence", "Another solution", "Partnering"] as const;
+export const talentInterestOptions = ["Talent Intelligence", "Another solution"] as const;
+export const contactInterestOptions = [...interestOptions, ...showroomInterestOptions, ...talentInterestOptions] as const;
 export type ContactInterest = (typeof contactInterestOptions)[number];
 
 export const contactFieldNames = ["name", "company", "email", "phone", "interest", "message"] as const;

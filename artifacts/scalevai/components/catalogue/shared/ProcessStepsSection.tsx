@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button, { type ButtonVariant } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
 import styles from "./ProcessStepsSection.module.css";
 
 export interface ProcessStep {
   readonly number: string;
   readonly title: string;
   readonly description: string;
+  readonly tags?: readonly string[];
 }
 
 interface ProcessCta {
@@ -57,16 +57,53 @@ function TimelineProcessSection({
   cta,
 }: TimelineProcessSectionProps) {
   const [activeStep, setActiveStep] = useState(0);
-  const reducedMotion = useReducedMotion();
+  const stepRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const headingId = `${id}-heading`;
 
   useEffect(() => {
-    if (reducedMotion || steps.length < 2) return;
-    const timer = window.setTimeout(() => {
-      setActiveStep((current) => (current + 1) % steps.length);
-    }, 3500);
-    return () => window.clearTimeout(timer);
-  }, [activeStep, reducedMotion, steps.length]);
+    let frame: number | null = null;
+    const updateActiveStep = () => {
+      frame = null;
+      const activationLine = window.innerHeight * 0.22;
+      let nearestIndex = -1;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      stepRefs.current.slice(0, steps.length).forEach((element, index) => {
+        if (!element) return;
+        const bounds = element.getBoundingClientRect();
+        if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) return;
+
+        const distance =
+          activationLine < bounds.top
+            ? bounds.top - activationLine
+            : activationLine > bounds.bottom
+              ? activationLine - bounds.bottom
+              : 0;
+
+        if (distance < nearestDistance) {
+          nearestIndex = index;
+          nearestDistance = distance;
+        }
+      });
+
+      if (nearestIndex >= 0) {
+        setActiveStep((current) => current === nearestIndex ? current : nearestIndex);
+      }
+    };
+    const scheduleUpdate = () => {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(updateActiveStep);
+    };
+
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    scheduleUpdate();
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, [steps.length]);
 
   return (
     <section aria-labelledby={headingId} className={styles.timelineSection} id={id}>
@@ -91,9 +128,11 @@ function TimelineProcessSection({
                 aria-pressed={activeStep === index}
                 className={`${styles.timelineStep} ${activeStep === index ? styles.activeStep : ""}`}
                 key={step.number}
+                ref={(element) => {
+                  stepRefs.current[index] = element;
+                }}
                 onClick={() => setActiveStep(index)}
                 onFocus={() => setActiveStep(index)}
-                onMouseEnter={() => setActiveStep(index)}
                 type="button"
               >
                 <small>{step.number}</small>
@@ -101,6 +140,11 @@ function TimelineProcessSection({
                   {step.title}
                 </span>
                 <span className={styles.stepDescription}>{step.description}</span>
+                {step.tags?.length ? (
+                  <span className={styles.stepTags}>
+                    {step.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </span>
+                ) : null}
               </button>
             ))}
           </div>

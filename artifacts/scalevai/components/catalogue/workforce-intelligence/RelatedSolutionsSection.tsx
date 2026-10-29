@@ -4,19 +4,37 @@ import { workforceIntelligencePage as copy } from "@/data/workforce-intelligence
 import { solutionHref } from "@/data/solutions";
 import styles from "./WorkforceFinalSections.module.css";
 
-export default function RelatedSolutionsSection() {
+interface RelatedSolutionCard {
+  readonly slug: string;
+  readonly title: string;
+  readonly summary: string;
+}
+
+interface RelatedSolutionsSectionProps {
+  readonly sectionId?: string;
+  readonly label?: string;
+  readonly heading?: string;
+  readonly cards?: readonly RelatedSolutionCard[];
+}
+
+export default function RelatedSolutionsSection({
+  sectionId = "related-solutions",
+  label = copy.related.label,
+  heading = copy.related.heading,
+  cards = copy.related.cards,
+}: RelatedSolutionsSectionProps = {}) {
   return (
-    <section className={styles.section} id="related-solutions">
+    <section className={styles.section} id={sectionId}>
       <div className={styles.container}>
         <Reveal>
-          <p className={styles.kicker}>{copy.related.label}</p>
+          <p className={styles.kicker}>{label}</p>
         </Reveal>
         <Reveal>
-          <h2 className={styles.sectionHeading}>{copy.related.heading}</h2>
+          <h2 className={styles.sectionHeading}>{heading}</h2>
         </Reveal>
         <Reveal>
           <div className={styles.relatedGrid}>
-            {copy.related.cards.map((solution) => (
+            {cards.map((solution) => (
               <Link
                 className={styles.relatedCard}
                 href={solutionHref(solution.slug)}

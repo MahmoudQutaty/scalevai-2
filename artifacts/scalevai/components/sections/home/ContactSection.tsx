@@ -32,7 +32,7 @@ interface ContactFormCopy {
 interface ContactSectionCopy {
   readonly heading: string;
   readonly text: string;
-  readonly bigText: string;
+  readonly bigText?: string;
   readonly form: ContactFormCopy;
 }
 
@@ -41,6 +41,7 @@ interface ContactSectionProps {
   readonly sectionId?: string;
   readonly fieldIdPrefix?: string;
   readonly interestOptions?: readonly ContactInterest[];
+  readonly initialInterest?: ContactInterest | "";
   readonly variant?: "home" | "service";
   readonly includePartnerBanner?: boolean;
 }
@@ -54,6 +55,7 @@ export function ContactSection({
   sectionId = "talk",
   fieldIdPrefix = "cf",
   interestOptions = homeInterestOptions,
+  initialInterest = "",
   variant = "home",
   includePartnerBanner = true,
 }: ContactSectionProps) {
@@ -61,7 +63,7 @@ export function ContactSection({
   const reduced = useReducedMotion();
   const formRef = useRef<HTMLFormElement>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
-  const [interest, setInterest] = useState<ContactInterest | "">("");
+  const [interest, setInterest] = useState<ContactInterest | "">(initialInterest);
   const [status, setStatus] = useState("");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
@@ -159,7 +161,7 @@ export function ContactSection({
           <Reveal>
             <SectionHeading className={styles.h2} text={content.heading} />
             <p className={styles.lead}>{content.text}</p>
-            <div className={styles.lt}>{content.bigText}</div>
+            {content.bigText ? <div className={styles.lt}>{content.bigText}</div> : null}
           </Reveal>
           <Reveal>
             <form ref={formRef} className={styles.form} onSubmit={onSubmit} onChange={onChange} noValidate aria-busy={pending} aria-labelledby={`${fieldIdPrefix}-form-h`}>
