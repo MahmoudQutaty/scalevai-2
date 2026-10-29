@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { hero } from "@/data/hero";
 import { heroPartners } from "@/data/partners";
@@ -185,7 +186,14 @@ export default function Hero() {
               onBlur={onLeave}
               onClick={() => onSelect(i)}
             >
-              {p.name}
+              <Image
+                alt=""
+                className={styles.partnerLogo}
+                height={32}
+                src={p.logo}
+                width={32}
+              />
+              <span className={styles.partnerName}>{p.name}</span>
             </button>
           ))}
         </div>
