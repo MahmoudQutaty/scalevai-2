@@ -13,7 +13,7 @@ export default function Footer() {
       <div className={styles.w}>
         <div className={styles.fc}>
           <div>
-            <Logo withMark={false} style={{ fontSize: 26, opacity: 1 }} />
+            <Logo style={{ fontSize: 26, opacity: 1 }} />
             <p className={styles.tag}>{copy.footerTagline}</p>
             <Button href={routes.contact} variant="footerContact">{copy.footerCta}</Button>
           </div>

@@ -1,3 +1,2 @@
-.logo{display:flex;align-items:center;gap:8px;font-size:28px;font-weight:600;letter-spacing:-.5px}
-.logo svg{width:30px;height:30px}
-.logo b{font-weight:600;color:#6fb0ff}
+.logo{display:inline-flex;align-items:center;font-size:28px;line-height:1}
+.image{display:block;width:auto;height:1.12em;max-width:100%;object-fit:contain}
