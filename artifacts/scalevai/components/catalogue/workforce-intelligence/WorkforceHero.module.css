@@ -105,10 +105,6 @@
   animation: enter 1s .75s backwards;
 }
 
-.howButton {
-  align-items: center;
-}
-
 @keyframes enter {
   from {
     transform: translateY(30px);

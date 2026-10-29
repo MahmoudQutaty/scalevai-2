@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Button from "@/components/ui/Button";
 import HeroVideoBackground from "@/components/ui/HeroVideoBackground";
+import ServiceHeroActions from "@/components/ui/ServiceHeroActions";
 import { immersiveShowroomPage as copy } from "@/data/immersive-showroom-page";
 import styles from "./ImmersiveShowroom.module.css";
 
@@ -28,14 +28,13 @@ export default function ShowroomHero() {
           ))}
         </ul>
         <p className={styles.heroDescription}>{copy.hero.description}</p>
-        <div className={styles.actions}>
-          <Button href="/contact" icon="✆" variant="pill">
-            {copy.hero.bookCall.replace(/ ›$/, "")}
-          </Button>
-          <Button href="#how-it-works" variant="ghost">
-            {copy.hero.howItWorks}
-          </Button>
-        </div>
+        <ServiceHeroActions
+          className={styles.actions}
+          primaryHref="/contact"
+          primaryLabel={copy.hero.bookCall.replace(/ ›$/, "")}
+          secondaryHref="#how-it-works"
+          secondaryLabel={copy.hero.howItWorks}
+        />
       </div>
     </header>
   );

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Button from "@/components/ui/Button";
 import { CountUp } from "@/components/ui/CountUp";
 import HeroVideoBackground from "@/components/ui/HeroVideoBackground";
+import ServiceHeroActions from "@/components/ui/ServiceHeroActions";
 import { workforceIntelligencePage as copy } from "@/data/workforce-intelligence-page";
 import styles from "./WorkforceHero.module.css";
 
@@ -30,14 +30,14 @@ export default function WorkforceHero() {
               <span className={styles.titleAccent}>{copy.heading[1]}</span>
             </h1>
             <p className={styles.lead}>{copy.description}</p>
-            <div className={styles.actions}>
-              <Button href="#talk" variant="pill" icon="✆" className={styles.callButton}>
-                {copy.bookCall}
-              </Button>
-              <Button href="#how" variant="ghost" className={styles.howButton}>
-                {copy.howItWorks}
-              </Button>
-            </div>
+            <ServiceHeroActions
+              className={styles.actions}
+              primaryHref="#talk"
+              primaryLabel={copy.bookCall}
+              secondaryHref="#how"
+              secondaryLabel={copy.howItWorks}
+              primaryClassName={styles.callButton}
+            />
           </div>
 
           <div

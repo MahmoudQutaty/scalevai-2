@@ -2,7 +2,7 @@
 .pill:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(15,98,232,.65)}
 .pill i{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center;font-style:normal}
 .alt{background:linear-gradient(90deg,#0d54c9,#1a6bff)}
-.ghost{display:inline-flex;gap:8px;border:1px solid var(--line);border-radius:99px;padding:8px 24px;transition:.3s;background:rgba(255,255,255,.06)}
+.ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:99px;padding:8px 24px;transition:.3s;background:rgba(255,255,255,.06)}
 .ghost:hover{background:#fff;color:var(--ink)}
 .ai{background:linear-gradient(90deg,#1b6bff,#7c3aed);border-radius:99px;padding:5px 22px;font-weight:600;font-style:italic;box-shadow:0 0 18px rgba(60,120,255,.55);transition:.3s}
 .ai:hover{transform:translateY(-2px)}

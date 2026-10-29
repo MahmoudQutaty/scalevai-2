@@ -15,7 +15,7 @@ export const immersiveShowroomPage = {
       "Turn your properties, stores and products into interactive 3D experiences. Remote and international buyers explore at their own pace, from any device, and arrive at the call ready to decide.",
     benefits: ["Works in any browser", "AR and AI guidance", "Live in weeks"],
     bookCall: "Book a call ›",
-    howItWorks: "See how it works ›",
+    howItWorks: "See how it works ↓",
   },
   overview: {
     accent: "#1a5cff",
