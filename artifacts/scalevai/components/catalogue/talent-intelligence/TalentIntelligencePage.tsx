@@ -243,8 +243,18 @@ export default function TalentIntelligencePage() {
             ))}
           </div>
           <p className={styles.atsLabel}>TWO-WAY SYNC WITH</p>
-          <div aria-label="Supported ATS platforms" className={styles.atsMarquee}>
-            <div>{[...copy.ats, ...copy.ats].map((name, index) => <span key={`${name}-${index}`}>{name}</span>)}</div>
+          <div aria-label="Supported ATS platforms" className={styles.atsMarquee} role="region">
+            <div className={styles.atsTrack}>
+              {[0, 1].map((groupIndex) => (
+                <div
+                  aria-hidden={groupIndex === 1}
+                  className={styles.atsGroup}
+                  key={groupIndex}
+                >
+                  {copy.ats.map((name) => <span key={name}>{name}</span>)}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
